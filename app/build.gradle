@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -26,4 +30,6 @@ dependencies {
     testImplementation lib_test.junit
     androidTestImplementation lib_test.testRunner
     androidTestImplementation lib_test.espresso
+
+    implementation project(path: ':lib_mvvm')
 }
