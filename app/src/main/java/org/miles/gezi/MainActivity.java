@@ -1,7 +1,9 @@
 package org.miles.gezi;
 
 import android.os.Bundle;
+import android.view.View;
 
+import org.miles.db.AppConfig;
 import org.miles.gezi.databinding.ActivityMainBinding;
 import org.miles.mvvm.BaseVewModelActivity;
 
@@ -10,7 +12,7 @@ public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, Main
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        AppConfig.init(getApplicationContext());
         initViews();
     }
 
@@ -25,6 +27,23 @@ public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, Main
     }
 
     private void initViews() {
-
+        mBinding.insertUserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mModel.insertUser();
+            }
+        });
+        mBinding.showUsersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mModel.showUsers();
+            }
+        });
+        mBinding.showUserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mModel.showUser();
+            }
+        });
     }
 }

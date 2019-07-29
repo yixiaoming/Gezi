@@ -1,15 +1,24 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
+
     defaultConfig {
-        applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
+
         testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation":"$projectDir/schemas".toString(),
+                        "room.incremental":"true"]
+            }
+        }
     }
     buildTypes {
         release {
@@ -18,19 +27,30 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
+//    javaCompileOptions {
+//        annotationProcessorOptions {
+//            arguments = [
+//                    "room.schemaLocation":"$projectDir/schemas".toString(),
+//                    "room.incremental":"true"]
+//        }
+//    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation lib_common.appCompat
-    implementation lib_common.constraintlayout
+
+    implementation lib_common.room
+    annotationProcessor lib_common.roomProcessor
+
     testImplementation lib_test.junit
+    testImplementation lib_test.testRunner
     androidTestImplementation lib_test.testRunner
     androidTestImplementation lib_test.espresso
-
-    implementation project(path: ':lib_mvvm')
-    implementation project(path: ':lib_db')
+    testImplementation 'org.robolectric:robolectric:4.3'
 }

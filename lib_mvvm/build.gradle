@@ -27,5 +27,7 @@ dependencies {
     implementation lib_common.appCompat
     api lib_common.lifecycle
     annotationProcessor lib_common.lifecycleProcessor
+
+    implementation project(path: ':lib_db')
 }
 

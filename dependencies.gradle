@@ -16,12 +16,15 @@ ext {
     junitVersion = "4.12"
     testRunnerVersion = "1.2.0"
     espressoVersion = "3.2.0"
+    roomVersion = "2.1.0"
 
     lib_common = [
             appCompat         : "androidx.appcompat:appcompat:$supportVersion",
             constraintlayout  : "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion",
             lifecycle         : "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
-            lifecycleProcessor: "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+            lifecycleProcessor: "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
+            room              : "androidx.room:room-runtime:$roomVersion",
+            roomProcessor     : "androidx.room:room-compiler:$roomVersion",
     ]
 
     lib_test = [
