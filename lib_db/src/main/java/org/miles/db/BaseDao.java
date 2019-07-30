@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.RawQuery;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import androidx.sqlite.db.SimpleSQLiteQuery;
 import androidx.sqlite.db.SupportSQLiteQuery;
@@ -17,8 +18,14 @@ public abstract class BaseDao<E> {
     @Insert
     public abstract long insert(E entity);
 
+    @Insert
+    public abstract long[] insert(List<E> entities);
+
     @Delete
     public abstract int delete(E entity);
+
+    @Delete
+    public abstract int delete(List<E> entities);
 
     @Update
     public abstract int update(E entity);
@@ -32,7 +39,7 @@ public abstract class BaseDao<E> {
 
     public E selectById(long id) {
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(
-                "SELECT * FROM " + getTableName()
+                "SELECT * FROM " + getTableName() + " where id=" + id
         );
         return doSelectOne(query);
     }

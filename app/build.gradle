@@ -21,6 +21,12 @@ android {
     dataBinding {
         enabled = true
     }
+
+    testOptions {
+        unitTests.all {
+            systemProperty 'robolectric.enabledSdks', '28'
+        }
+    }
 }
 
 dependencies {
