@@ -4,7 +4,7 @@ import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
-import org.miles.db.AppDatabaseManager;
+import org.miles.db.AppDatabase;
 import org.miles.db.User;
 
 import java.util.List;
@@ -17,16 +17,16 @@ public class MainViewModel extends ViewModel {
     public void insertUser() {
         User user = new User();
         user.name = "yxm" + (new Random().nextInt(1000));
-        AppDatabaseManager.get().getUserDao().insert(user);
+        AppDatabase.get().userDao().insert(user);
     }
 
     public void showUsers() {
-        List<User> userList = AppDatabaseManager.get().getUserDao().selectAll();
+        List<User> userList = AppDatabase.get().getUserDao().selectAll();
         Log.d(TAG, "showUsers: " + userList);
     }
 
     public void showUser() {
-        User user = AppDatabaseManager.get().getUserDao().selectById(1);
+        User user = AppDatabase.get().getUserDao().selectById(1);
         Log.d(TAG, "showUser: " + user);
     }
 }

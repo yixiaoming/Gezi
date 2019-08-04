@@ -31,11 +31,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation lib_common.appCompat
-    implementation lib_common.constraintlayout
-    testImplementation lib_test.junit
-    androidTestImplementation lib_test.testRunner
-    androidTestImplementation lib_test.espresso
+    implementation common.appCompat
+    implementation common.constraintlayout
+    implementation common.lifecycle
+    annotationProcessor common.lifecycleProcessor
+
+    testImplementation test.junit
+    androidTestImplementation test.testRunner
+    androidTestImplementation test.espresso
 
     implementation project(path: ':lib_mvvm')
     implementation project(path: ':lib_db')

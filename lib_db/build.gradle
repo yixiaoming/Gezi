@@ -10,7 +10,8 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 
-        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+//        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -27,30 +28,28 @@ android {
         }
     }
 
-//    javaCompileOptions {
-//        annotationProcessorOptions {
-//            arguments = [
-//                    "room.schemaLocation":"$projectDir/schemas".toString(),
-//                    "room.incremental":"true"]
-//        }
-//    }
-
     testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
+        unitTests.includeAndroidResources = true
+        unitTests.returnDefaultValues = true
     }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation lib_common.room
-    annotationProcessor lib_common.roomProcessor
+    implementation common.room
+    annotationProcessor common.roomProcessor
+    api common.lifecycle
+    annotationProcessor common.lifecycleProcessor
 
-    testImplementation lib_test.junit
-    testImplementation lib_test.testRunner
-    androidTestImplementation lib_test.testRunner
-    androidTestImplementation lib_test.espresso
-    testImplementation 'org.robolectric:robolectric:4.3'
+    testImplementation test.junit
+    testImplementation test.testCore
+
+    testImplementation test.testRunner
+    testImplementation test.testRule
+
+    testImplementation test.extJunit
+
+    testImplementation test.robolectric
+
 }

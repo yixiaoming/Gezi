@@ -1,8 +1,10 @@
-package org.miles.db;
+package org.miles.db.base;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 import androidx.room.RawQuery;
 import androidx.room.Transaction;
 import androidx.room.Update;
@@ -15,14 +17,23 @@ import java.util.List;
 @Dao
 public abstract class BaseDao<E> {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long insert(E entity);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long[] insert(List<E> entities);
 
     @Delete
     public abstract int delete(E entity);
+
+    @Transaction
+    public int delete(long id) {
+        SimpleSQLiteQuery query = new SimpleSQLiteQuery(
+                "DELETE FROM " + getTableName() + " WHERE id=?",
+                new Object[]{id}
+        );
+        return doDeleteOne(query);
+    }
 
     @Delete
     public abstract int delete(List<E> entities);
@@ -39,17 +50,17 @@ public abstract class BaseDao<E> {
 
     public E selectById(long id) {
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(
-                "SELECT * FROM " + getTableName() + " where id=" + id
+                "SELECT * FROM " + getTableName() + " where id=?",
+                new Object[]{id}
         );
         return doSelectOne(query);
     }
 
-    public String getTableName() {
+    protected String getTableName() {
         Class clazz = (Class)
                 ((ParameterizedType) getClass().getSuperclass().getGenericSuperclass())
                         .getActualTypeArguments()[0];
-        String tableName = clazz.getSimpleName();
-        return tableName;
+        return clazz.getSimpleName();
     }
 
     @RawQuery
@@ -57,4 +68,7 @@ public abstract class BaseDao<E> {
 
     @RawQuery
     protected abstract E doSelectOne(SupportSQLiteQuery query);
+
+    @RawQuery
+    protected abstract int doDeleteOne(SupportSQLiteQuery query);
 }

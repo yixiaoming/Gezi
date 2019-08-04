@@ -1,14 +1,56 @@
 package org.miles.db;
 
+import android.content.Context;
+
+import androidx.annotation.VisibleForTesting;
 import androidx.room.Database;
+import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {User.class, Address.class}, version = 1)
+import org.miles.db.base.BaseEntity;
+import org.miles.db.base.BaseEntityDao;
+
+@Database(entities = {BaseEntity.class, User.class, Address.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static final String DB_NAME = "gezi.db";
 
-    abstract UserDao userDao();
+    private static volatile AppDatabase sAppDatabase;
 
-    abstract UserAddressesDao userAddressesDao();
+    public abstract BaseEntityDao baseEntityDao();
+
+    public abstract UserDao userDao();
+
+    public abstract UserAddressesDao userAddressesDao();
+
+    public static AppDatabase get() {
+        if (sAppDatabase == null) {
+            synchronized (AppDatabase.class) {
+                if (sAppDatabase == null) {
+                    sAppDatabase = Room.databaseBuilder(AppConfig.getContext(),
+                            AppDatabase.class, DB_NAME).build();
+                }
+            }
+        }
+        return sAppDatabase;
+    }
+
+    @VisibleForTesting
+    public static AppDatabase get(Context context) {
+        if (sAppDatabase == null) {
+            synchronized (AppDatabase.class) {
+                if (sAppDatabase == null) {
+                    sAppDatabase = Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
+                            .allowMainThreadQueries()
+                            .build();
+
+                }
+            }
+        }
+        return sAppDatabase;
+    }
+
+    public void clear() {
+        sAppDatabase = null;
+    }
 }

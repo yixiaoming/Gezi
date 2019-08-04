@@ -24,9 +24,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation lib_common.appCompat
-    api lib_common.lifecycle
-    annotationProcessor lib_common.lifecycleProcessor
+    implementation common.appCompat
+
+    implementation common.lifecycle
+    annotationProcessor common.lifecycleProcessor
+    implementation common.room
+    annotationProcessor common.roomProcessor
 
     implementation project(path: ':lib_db')
 }
