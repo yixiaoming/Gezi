@@ -15,4 +15,14 @@ public class Address {
     public String addr;
 
     public long userId;
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", post='" + post + '\'' +
+                ", addr='" + addr + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }

@@ -23,6 +23,8 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserAddressesDao userAddressesDao();
 
+    public abstract AddressDao addressDao();
+
     public static AppDatabase get() {
         if (sAppDatabase == null) {
             synchronized (AppDatabase.class) {
@@ -50,6 +52,7 @@ public abstract class AppDatabase extends RoomDatabase {
         return sAppDatabase;
     }
 
+    @VisibleForTesting
     public void clear() {
         sAppDatabase = null;
     }

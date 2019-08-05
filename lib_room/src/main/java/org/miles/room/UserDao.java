@@ -16,8 +16,9 @@ public abstract class UserDao extends BaseDao<User> {
         for (Address address : addresses) {
             address.userId = user.id;
         }
+        long result = insert(user);
         insertAddresses(addresses);
-        return insert(user);
+        return result;
     }
 
     @Insert

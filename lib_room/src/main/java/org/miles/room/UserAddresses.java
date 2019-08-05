@@ -12,4 +12,12 @@ public class UserAddresses {
 
     @Relation(entity = Address.class, parentColumn = "id", entityColumn = "userId")
     public List<Address> addresses;
+
+    @Override
+    public String toString() {
+        return "UserAddresses{" +
+                "user=" + user +
+                ", addresses=" + addresses +
+                '}';
+    }
 }
