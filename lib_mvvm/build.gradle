@@ -31,6 +31,6 @@ dependencies {
     implementation common.room
     annotationProcessor common.roomProcessor
 
-    implementation project(path: ':lib_db')
+    implementation project(path: ':lib_room')
 }
 

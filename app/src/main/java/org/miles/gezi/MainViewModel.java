@@ -4,8 +4,8 @@ import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
-import org.miles.db.AppDatabase;
-import org.miles.db.User;
+import org.miles.room.AppDatabase;
+import org.miles.room.User;
 
 import java.util.List;
 import java.util.Random;

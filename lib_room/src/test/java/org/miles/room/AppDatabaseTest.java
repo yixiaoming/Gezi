@@ -1,4 +1,4 @@
-package org.miles.db;
+package org.miles.room;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 

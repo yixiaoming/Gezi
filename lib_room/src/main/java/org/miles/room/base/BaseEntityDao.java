@@ -1,4 +1,4 @@
-package org.miles.db.base;
+package org.miles.room.base;
 
 import androidx.room.Dao;
 

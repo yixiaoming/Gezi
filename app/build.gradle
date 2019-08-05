@@ -41,5 +41,5 @@ dependencies {
     androidTestImplementation test.espresso
 
     implementation project(path: ':lib_mvvm')
-    implementation project(path: ':lib_db')
+    implementation project(path: ':lib_room')
 }

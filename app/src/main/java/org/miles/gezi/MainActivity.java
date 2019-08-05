@@ -3,7 +3,7 @@ package org.miles.gezi;
 import android.os.Bundle;
 import android.view.View;
 
-import org.miles.db.AppConfig;
+import org.miles.room.AppConfig;
 import org.miles.gezi.databinding.ActivityMainBinding;
 import org.miles.mvvm.BaseVewModelActivity;
 

@@ -1,4 +1,4 @@
-package org.miles.db;
+package org.miles.room;
 
 import android.content.Context;
 
