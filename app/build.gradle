@@ -33,8 +33,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation common.appCompat
     implementation common.constraintlayout
+    implementation common.design
     implementation common.lifecycle
     annotationProcessor common.lifecycleProcessor
+
 
     testImplementation test.junit
     androidTestImplementation test.testRunner
@@ -42,4 +44,5 @@ dependencies {
 
     implementation project(path: ':lib_mvvm')
     implementation project(path: ':lib_room')
+    implementation project(path: ':lib_widget')
 }

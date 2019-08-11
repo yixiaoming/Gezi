@@ -10,9 +10,6 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 
-//        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
-//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [

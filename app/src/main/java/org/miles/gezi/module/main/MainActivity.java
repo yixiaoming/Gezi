@@ -1,17 +1,23 @@
 package org.miles.gezi.module.main;
 
 import android.os.Bundle;
-import android.view.View;
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.miles.gezi.R;
 import org.miles.gezi.databinding.ActivityMainBinding;
 import org.miles.lib.mvvm.BaseVewModelActivity;
 
-public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, MainViewModel> {
+public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, MainViewModel>
+        implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initToolbar();
         initViews();
     }
 
@@ -25,24 +31,16 @@ public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, Main
         return MainViewModel.class;
     }
 
+    private void initToolbar() {
+        setSupportActionBar(mBinding.toolbar);
+    }
+
     private void initViews() {
-        mBinding.insertUserBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mModel.insertUser();
-            }
-        });
-        mBinding.showUsersBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mModel.showUsers();
-            }
-        });
-        mBinding.showUserBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mModel.showUser();
-            }
-        });
+        mBinding.bottomNavigation.setOnNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
     }
 }

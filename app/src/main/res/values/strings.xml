@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Gezi</string>
+
+    <!--底部bar-->
+    <string name="title_wan">Wan</string>
+    <string name="title_news">干货</string>
+    <string name="title_video">视频</string>
+    <string name="title_photo">音乐</string>
+    <string name="title_wo">我的</string>
+    <string name="title_oneapi">OneApi</string>
 </resources>
