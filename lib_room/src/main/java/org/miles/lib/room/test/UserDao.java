@@ -1,10 +1,10 @@
-package org.miles.room;
+package org.miles.lib.room.test;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Transaction;
 
-import org.miles.room.base.BaseDao;
+import org.miles.lib.room.BaseDao;
 
 import java.util.List;
 

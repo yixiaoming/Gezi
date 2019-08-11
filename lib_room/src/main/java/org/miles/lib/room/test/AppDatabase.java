@@ -1,4 +1,4 @@
-package org.miles.room;
+package org.miles.lib.room.test;
 
 import android.content.Context;
 
@@ -7,8 +7,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import org.miles.room.base.BaseEntity;
-import org.miles.room.base.BaseEntityDao;
+import org.miles.lib.room.AppConfig;
+import org.miles.lib.room.BaseEntity;
+import org.miles.lib.room.BaseEntityDao;
 
 @Database(entities = {BaseEntity.class, User.class, Address.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {

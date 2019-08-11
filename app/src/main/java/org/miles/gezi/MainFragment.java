@@ -1,7 +1,7 @@
 package org.miles.gezi;
 
 import org.miles.gezi.databinding.ActivityMainBinding;
-import org.miles.mvvm.BaseViewModelFragment;
+import org.miles.lib.mvvm.BaseViewModelFragment;
 
 public class MainFragment extends BaseViewModelFragment<ActivityMainBinding, MainViewModel> {
     @Override

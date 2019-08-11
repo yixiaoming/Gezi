@@ -1,4 +1,4 @@
-package org.miles.room;
+package org.miles.lib.room;
 
 import android.content.Context;
 

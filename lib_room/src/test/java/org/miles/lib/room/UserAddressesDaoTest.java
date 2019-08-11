@@ -1,4 +1,4 @@
-package org.miles.room;
+package org.miles.lib.room;
 
 import android.content.Context;
 
@@ -9,6 +9,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.miles.lib.room.test.Address;
+import org.miles.lib.room.test.AddressDao;
+import org.miles.lib.room.test.AppDatabase;
+import org.miles.lib.room.test.User;
+import org.miles.lib.room.test.UserAddresses;
+import org.miles.lib.room.test.UserAddressesDao;
+import org.miles.lib.room.test.UserDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +68,7 @@ public class UserAddressesDaoTest {
     }
 
     @Test
-    public void test() {
+    public void selectAll() {
         List<UserAddresses> list = mUserAddressesDao.selectAll();
         for (UserAddresses item : list) {
             System.out.println(item);

@@ -3,9 +3,9 @@ package org.miles.gezi;
 import android.os.Bundle;
 import android.view.View;
 
-import org.miles.room.AppConfig;
+import org.miles.lib.room.AppConfig;
 import org.miles.gezi.databinding.ActivityMainBinding;
-import org.miles.mvvm.BaseVewModelActivity;
+import org.miles.lib.mvvm.BaseVewModelActivity;
 
 public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, MainViewModel> {
 

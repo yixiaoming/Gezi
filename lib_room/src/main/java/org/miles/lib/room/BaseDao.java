@@ -1,4 +1,4 @@
-package org.miles.room.base;
+package org.miles.lib.room;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

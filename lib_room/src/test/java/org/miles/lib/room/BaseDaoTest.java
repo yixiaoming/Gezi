@@ -1,4 +1,4 @@
-package org.miles.room;
+package org.miles.lib.room;
 
 import android.content.Context;
 
@@ -10,8 +10,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.miles.room.base.BaseEntity;
-import org.miles.room.base.BaseEntityDao;
+import org.miles.lib.room.test.AppDatabase;
 
 import java.util.ArrayList;
 import java.util.List;

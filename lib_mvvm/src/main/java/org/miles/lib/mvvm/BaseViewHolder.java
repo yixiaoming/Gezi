@@ -1,4 +1,4 @@
-package org.miles.mvvm;
+package org.miles.lib.mvvm;
 
 public class BaseViewHolder {
 }

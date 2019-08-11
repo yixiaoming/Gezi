@@ -1,8 +1,8 @@
-package org.miles.room;
+package org.miles.lib.room.test;
 
 import androidx.room.Dao;
 
-import org.miles.room.base.BaseDao;
+import org.miles.lib.room.BaseDao;
 
 @Dao
 public abstract class AddressDao extends BaseDao<Address> {

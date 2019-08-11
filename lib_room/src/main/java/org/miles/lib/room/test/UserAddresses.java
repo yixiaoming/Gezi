@@ -1,4 +1,4 @@
-package org.miles.room;
+package org.miles.lib.room.test;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
