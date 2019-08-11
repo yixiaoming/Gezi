@@ -1,9 +1,9 @@
-package org.miles.gezi;
+package org.miles.gezi.module.main;
 
 import android.os.Bundle;
 import android.view.View;
 
-import org.miles.lib.room.AppConfig;
+import org.miles.gezi.R;
 import org.miles.gezi.databinding.ActivityMainBinding;
 import org.miles.lib.mvvm.BaseVewModelActivity;
 
@@ -12,7 +12,6 @@ public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, Main
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        AppConfig.init(getApplicationContext());
         initViews();
     }
 

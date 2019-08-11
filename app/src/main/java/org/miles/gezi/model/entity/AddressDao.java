@@ -1,4 +1,4 @@
-package org.miles.lib.room.test;
+package org.miles.gezi.model.entity;
 
 import androidx.room.Dao;
 

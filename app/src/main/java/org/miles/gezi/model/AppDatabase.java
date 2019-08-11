@@ -1,37 +1,36 @@
-package org.miles.lib.room.test;
+package org.miles.gezi.model;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import org.miles.lib.room.AppConfig;
-import org.miles.lib.room.BaseEntity;
-import org.miles.lib.room.BaseEntityDao;
+import org.miles.gezi.model.entity.User;
+import org.miles.gezi.model.entity.UserDao;
 
-@Database(entities = {BaseEntity.class, User.class, Address.class}, version = 1)
+@Database(entities = {User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
     public static final String DB_NAME = "gezi.db";
 
     private static volatile AppDatabase sAppDatabase;
-
-    public abstract BaseEntityDao baseEntityDao();
+    private static Context sAppContext;
 
     public abstract UserDao userDao();
 
-    public abstract UserAddressesDao userAddressesDao();
-
-    public abstract AddressDao addressDao();
+    public static void init(@NonNull Context context) {
+        sAppContext = context.getApplicationContext();
+    }
 
     public static AppDatabase get() {
         if (sAppDatabase == null) {
             synchronized (AppDatabase.class) {
                 if (sAppDatabase == null) {
-                    sAppDatabase = Room.databaseBuilder(AppConfig.getContext(),
-                            AppDatabase.class, DB_NAME).build();
+                    sAppDatabase = Room.databaseBuilder(sAppContext, AppDatabase.class, DB_NAME)
+                            .build();
                 }
             }
         }
@@ -39,11 +38,11 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     @VisibleForTesting
-    public static AppDatabase get(Context context) {
+    public static AppDatabase getAllowMainThread() {
         if (sAppDatabase == null) {
             synchronized (AppDatabase.class) {
                 if (sAppDatabase == null) {
-                    sAppDatabase = Room.databaseBuilder(context, AppDatabase.class, DB_NAME)
+                    sAppDatabase = Room.databaseBuilder(sAppContext, AppDatabase.class, DB_NAME)
                             .allowMainThreadQueries()
                             .build();
 

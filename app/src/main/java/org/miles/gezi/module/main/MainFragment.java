@@ -1,5 +1,6 @@
-package org.miles.gezi;
+package org.miles.gezi.module.main;
 
+import org.miles.gezi.R;
 import org.miles.gezi.databinding.ActivityMainBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 

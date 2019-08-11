@@ -37,9 +37,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation common.room
+    api common.room
     annotationProcessor common.roomProcessor
-    api common.lifecycle
+    implementation common.lifecycle
     annotationProcessor common.lifecycleProcessor
 
     testImplementation test.junit

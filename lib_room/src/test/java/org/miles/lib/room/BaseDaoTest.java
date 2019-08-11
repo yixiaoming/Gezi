@@ -10,7 +10,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.miles.lib.room.test.AppDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,8 @@ public class BaseDaoTest {
     @Before
     public void init() {
         Context context = ApplicationProvider.getApplicationContext();
-        mBaseEntityDao = AppDatabase.get(context).baseEntityDao();
+        BaseTestDatabase.init(context);
+        mBaseEntityDao = BaseTestDatabase.getAllowMainThread().baseEntityDao();
 
         for (int i = 1; i <= ROW_NUM; i++) {
             BaseEntity entity = new BaseEntity();
@@ -38,7 +38,7 @@ public class BaseDaoTest {
 
     @After
     public void clear(){
-        AppDatabase.get().clear();
+        BaseTestDatabase.get().clear();
     }
 
     @Test
