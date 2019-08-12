@@ -42,7 +42,7 @@ dependencies {
     androidTestImplementation test.testRunner
     androidTestImplementation test.espresso
 
-    implementation project(path: ':lib_mvvm')
-    implementation project(path: ':lib_room')
-    implementation project(path: ':lib_widget')
+    implementation project(path: ':common:lib_mvvm')
+    implementation project(path: ':common:lib_room')
+    implementation project(path: ':common:lib_widget')
 }
