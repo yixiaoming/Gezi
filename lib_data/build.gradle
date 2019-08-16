@@ -1,20 +1,23 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.1"
-
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation": "$projectDir/schemas".toString(),
+                        "room.incremental"   : "true"]
+            }
+        }
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -22,13 +25,41 @@ android {
         }
     }
 
+    testOptions {
+        unitTests.includeAndroidResources = true
+        unitTests.returnDefaultValues = true
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation project(":common:lib_room")
+
+    implementation common.room
+    annotationProcessor common.roomProcessor
+    implementation common.lifecycle
+    annotationProcessor common.lifecycleProcessor
+
+    implementation common.retrofit
+    implementation common.retrofitJson
+    implementation common.retrofitRxjava
+
+    implementation common.okhttp
+
+    implementation common.jiecaoPlayer
+
+    implementation common.rxJava
+    implementation common.rxAndroid
+
+    implementation common.glide
+    annotationProcessor common.glideProcessor
+
+    testImplementation test.junit
+    testImplementation test.testCore
+    testImplementation test.testRunner
+    testImplementation test.testRule
+    testImplementation test.extJunit
+    testImplementation test.robolectric
 }

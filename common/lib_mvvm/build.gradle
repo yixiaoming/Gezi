@@ -28,9 +28,5 @@ dependencies {
 
     implementation common.lifecycle
     annotationProcessor common.lifecycleProcessor
-    implementation common.room
-    annotationProcessor common.roomProcessor
-
-    implementation project(path: ':common:lib_room')
 }
 
