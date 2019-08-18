@@ -3,7 +3,7 @@ package org.miles.gezi.module.app;
 import android.app.Application;
 import android.content.Context;
 
-import org.miles.gezi.model.AppDatabase;
+import org.miles.lib.data.DataManager;
 
 public class App extends Application {
 
@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        AppDatabase.init(sAppContext);
+        DataManager.init(sAppContext);
     }
 
     public static Context get() {

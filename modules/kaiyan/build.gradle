@@ -10,13 +10,6 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [
-                        "room.schemaLocation": "$projectDir/schemas".toString(),
-                        "room.incremental"   : "true"]
-            }
-        }
     }
     buildTypes {
         release {
@@ -35,12 +28,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(":modules:kaiyan")
+    api project(":common:lib_room")
 
-    testImplementation common.room
+    implementation common.room
     annotationProcessor common.roomProcessor
-//    implementation common.lifecycle
-//    annotationProcessor common.lifecycleProcessor
+    implementation common.lifecycle
+    annotationProcessor common.lifecycleProcessor
 
     implementation common.retrofit
     implementation common.retrofitJson
@@ -48,8 +41,13 @@ dependencies {
 
     implementation common.okhttp
 
-    testImplementation common.rxJava
-    testImplementation common.rxAndroid
+    implementation common.jiecaoPlayer
+
+    implementation common.rxJava
+    implementation common.rxAndroid
+
+    implementation common.glide
+    annotationProcessor common.glideProcessor
 
     testImplementation test.junit
     testImplementation test.testCore
