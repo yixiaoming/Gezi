@@ -35,7 +35,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(":modules:kaiyan")
+    if (!isModule.toBoolean()) {
+        implementation project(":modules:kaiyan")
+    }
 
     testImplementation common.room
     annotationProcessor common.roomProcessor
@@ -46,7 +48,7 @@ dependencies {
     implementation common.retrofitJson
     implementation common.retrofitRxjava
 
-    implementation common.okhttp
+//    implementation common.okhttp
 
     testImplementation common.rxJava
     testImplementation common.rxAndroid

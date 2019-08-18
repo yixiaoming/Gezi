@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -23,6 +27,15 @@ android {
         unitTests.returnDefaultValues = true
     }
 
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -30,8 +43,8 @@ dependencies {
 
     api project(":common:lib_room")
 
-    implementation common.room
-    annotationProcessor common.roomProcessor
+//    implementation common.room
+//    annotationProcessor common.roomProcessor
     implementation common.lifecycle
     annotationProcessor common.lifecycleProcessor
 
@@ -39,7 +52,7 @@ dependencies {
     implementation common.retrofitJson
     implementation common.retrofitRxjava
 
-    implementation common.okhttp
+//    implementation common.okhttp
 
     implementation common.jiecaoPlayer
 
@@ -48,11 +61,4 @@ dependencies {
 
     implementation common.glide
     annotationProcessor common.glideProcessor
-
-    testImplementation test.junit
-    testImplementation test.testCore
-    testImplementation test.testRunner
-    testImplementation test.testRule
-    testImplementation test.extJunit
-    testImplementation test.robolectric
 }

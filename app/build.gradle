@@ -46,6 +46,8 @@ dependencies {
     implementation project(path: ':common:lib_room')
     implementation project(path: ':common:lib_widget')
 
-    implementation project(path: ':modules:kaiyan')
     implementation project(path: ':lib_data')
+    if (!isModule.toBoolean()) {
+        implementation project(path: ':modules:kaiyan')
+    }
 }
