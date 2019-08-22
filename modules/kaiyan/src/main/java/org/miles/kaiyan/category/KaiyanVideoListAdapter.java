@@ -13,8 +13,8 @@ import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KaiyanCategoryAdapter
-        extends RecyclerView.Adapter<KaiyanCategoryAdapter.KaiyanCategoryViewHolder> {
+public class KaiyanVideoListAdapter
+        extends RecyclerView.Adapter<KaiyanVideoListAdapter.KaiyanCategoryViewHolder> {
 
     private List<KaiyanVideoItem> mKaiyanVideoItems = new ArrayList<>();
 
