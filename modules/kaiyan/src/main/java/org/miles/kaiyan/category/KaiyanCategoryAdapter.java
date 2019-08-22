@@ -1,15 +1,14 @@
 package org.miles.kaiyan.category;
 
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.KaiyanVideoItemLayoutBinding;
 import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
+import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +27,7 @@ public class KaiyanCategoryAdapter
     @NonNull
     @Override
     public KaiyanCategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        KaiyanVideoItemLayoutBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.kaiyan_video_item_layout, parent, false);
-        return new KaiyanCategoryViewHolder(binding);
+        return new KaiyanCategoryViewHolder(parent, R.layout.kaiyan_video_item_layout);
     }
 
     @Override
@@ -43,17 +40,16 @@ public class KaiyanCategoryAdapter
         return mKaiyanVideoItems.size();
     }
 
-    class KaiyanCategoryViewHolder extends RecyclerView.ViewHolder {
+    class KaiyanCategoryViewHolder
+            extends BaseRecyclerViewHolder<KaiyanVideoItemLayoutBinding, KaiyanVideoItem> {
 
-        private KaiyanVideoItemLayoutBinding mBinding;
-
-        public KaiyanCategoryViewHolder(@NonNull KaiyanVideoItemLayoutBinding binding) {
-            super(binding.getRoot());
-            mBinding = binding;
+        public KaiyanCategoryViewHolder(@NonNull ViewGroup parent, int layoutId) {
+            super(parent, layoutId);
         }
 
-        public void bind(KaiyanVideoItem kaiyanVideoItem) {
-            mBinding.title.setText(kaiyanVideoItem.data.title);
+        @Override
+        public void bind(KaiyanVideoItem data) {
+            mBinding.title.setText(data.data.title);
         }
     }
 }

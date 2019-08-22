@@ -25,6 +25,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation common.appCompat
+    implementation common.design
 
     implementation common.lifecycle
     annotationProcessor common.lifecycleProcessor

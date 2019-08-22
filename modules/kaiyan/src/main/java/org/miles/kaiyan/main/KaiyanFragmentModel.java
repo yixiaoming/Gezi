@@ -1,12 +1,9 @@
 package org.miles.kaiyan.main;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.miles.lib.data.RetrofitManager;
 import org.miles.lib.data.kaiyan.KaiyanDataSource;
 import org.miles.lib.data.kaiyan.api.KaiyanApi;
 import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
