@@ -2,9 +2,9 @@ package org.miles.lib.data;
 
 import android.content.Context;
 
-import org.miles.kaiyan.data.KaiyanDataSource;
 import org.miles.lib.data.kaiyan.KaiyanApiImpl;
 import org.miles.lib.data.kaiyan.KaiyanDaoImpl;
+import org.miles.lib.data.kaiyan.KaiyanDataSource;
 
 public class DataManager {
 

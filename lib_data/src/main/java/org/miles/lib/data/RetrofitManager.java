@@ -1,6 +1,6 @@
 package org.miles.lib.data;
 
-import org.miles.kaiyan.data.api.KaiyanApi;
+import org.miles.lib.data.kaiyan.api.KaiyanApi;
 
 import java.io.IOException;
 

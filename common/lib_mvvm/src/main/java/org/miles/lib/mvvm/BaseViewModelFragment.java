@@ -22,13 +22,13 @@ public abstract class BaseViewModelFragment<V extends ViewDataBinding, M extends
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mModel = ViewModelProviders.of(this).get(getViewModelClass());
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
-        mModel = ViewModelProviders.of(this).get(getViewModelClass());
         return mBinding.getRoot();
     }
 

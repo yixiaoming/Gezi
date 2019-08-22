@@ -8,10 +8,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import org.miles.kaiyan.data.db.KaiyanCategoryDao;
-import org.miles.kaiyan.data.db.KaiyanVideoItemDao;
-import org.miles.kaiyan.data.entity.KaiyanCategory;
-import org.miles.kaiyan.data.entity.KaiyanVideoItem;
+import org.miles.lib.data.kaiyan.db.KaiyanCategoryDao;
+import org.miles.lib.data.kaiyan.db.KaiyanVideoItemDao;
+import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
+import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
 
 @Database(entities = {KaiyanCategory.class, KaiyanVideoItem.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {

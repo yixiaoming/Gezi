@@ -9,7 +9,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
-public abstract class BaseVewModelActivity<V extends ViewDataBinding, M extends ViewModel>
+public abstract class BaseViewModelActivity<V extends ViewDataBinding, M extends ViewModel>
         extends AppCompatActivity {
 
     protected V mBinding;

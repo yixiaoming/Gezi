@@ -9,9 +9,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.miles.gezi.R;
 import org.miles.gezi.databinding.ActivityMainBinding;
-import org.miles.lib.mvvm.BaseVewModelActivity;
+import org.miles.lib.mvvm.BaseViewModelActivity;
 
-public class MainActivity extends BaseVewModelActivity<ActivityMainBinding, MainViewModel>
+public class MainActivity extends BaseViewModelActivity<ActivityMainBinding, MainViewModel>
         implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override

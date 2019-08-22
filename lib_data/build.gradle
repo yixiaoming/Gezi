@@ -35,23 +35,16 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    if (!isModule.toBoolean()) {
-        implementation project(":modules:kaiyan")
-    }
+    implementation project(":common:lib_room")
 
-    testImplementation common.room
-    annotationProcessor common.roomProcessor
-//    implementation common.lifecycle
-//    annotationProcessor common.lifecycleProcessor
+//    implementation common.room
+//    annotationProcessor common.roomProcessor
 
     implementation common.retrofit
     implementation common.retrofitJson
     implementation common.retrofitRxjava
 
-//    implementation common.okhttp
-
-    testImplementation common.rxJava
-    testImplementation common.rxAndroid
+    implementation common.rxJava
 
     testImplementation test.junit
     testImplementation test.testCore

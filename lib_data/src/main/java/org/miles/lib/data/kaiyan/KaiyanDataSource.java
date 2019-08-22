@@ -1,8 +1,8 @@
-package org.miles.kaiyan.data;
+package org.miles.lib.data.kaiyan;
 
-import org.miles.kaiyan.data.api.KaiyanApi;
-import org.miles.kaiyan.data.db.KaiyanCategoryDao;
-import org.miles.kaiyan.data.db.KaiyanVideoItemDao;
+import org.miles.lib.data.kaiyan.api.KaiyanApi;
+import org.miles.lib.data.kaiyan.db.KaiyanCategoryDao;
+import org.miles.lib.data.kaiyan.db.KaiyanVideoItemDao;
 
 public class KaiyanDataSource {
 

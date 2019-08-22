@@ -1,7 +1,7 @@
-package org.miles.kaiyan.data.api;
+package org.miles.lib.data.kaiyan.api;
 
-import org.miles.kaiyan.data.entity.KaiyanCategory;
-import org.miles.kaiyan.data.entity.KaiyanVideoList;
+import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
+import org.miles.lib.data.kaiyan.entity.KaiyanVideoList;
 
 import java.util.List;
 
@@ -18,12 +18,12 @@ public interface KaiyanApi {
 
     @GET("api/v3/categories/videoList")
     Observable<KaiyanVideoList> getVideoList(
-            @Query("id") int id
+            @Query("id") long id
     );
 
     @GET("api/v3/categories/videoList")
     Observable<KaiyanVideoList> getVideoList(
-            @Query("id") int id,
+            @Query("id") long id,
             @Query("start") int start,
             @Query("num") int num
     );

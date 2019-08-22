@@ -1,11 +1,10 @@
 package org.miles.kaiyan.api;
 
 import org.junit.Test;
-import org.miles.lib.data.DataManager;
 import org.miles.lib.data.RetrofitManager;
-import org.miles.kaiyan.data.entity.KaiyanCategory;
-import org.miles.kaiyan.data.entity.KaiyanVideoItem;
-import org.miles.kaiyan.data.entity.KaiyanVideoList;
+import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
+import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
+import org.miles.lib.data.kaiyan.entity.KaiyanVideoList;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class KaiyanApiTest {
     }
 
     @Test
-    public void getVideoListPage(){
+    public void getVideoListPage() {
         RetrofitManager.get().getKaiyanApi().getVideoList(14, 0, 1)
                 .subscribe(new Consumer<KaiyanVideoList>() {
                     @Override
