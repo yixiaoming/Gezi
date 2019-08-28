@@ -10,12 +10,13 @@ import org.miles.kaiyan.category.KaiyanCategoryFragment;
 import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class KaiyanViewpagerAdapter extends FragmentPagerAdapter {
 
     private List<KaiyanCategory> mKaiyanCategories = new ArrayList<>();
-    private List<Fragment> mFragments;
+    private List<Fragment> mFragments = new ArrayList<>();
 
     public KaiyanViewpagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
@@ -24,7 +25,12 @@ public class KaiyanViewpagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return mFragments.get(position);
+        Fragment fragment = mFragments.get(position);
+        if (fragment == null) {
+            fragment = KaiyanCategoryFragment.newInstance(mKaiyanCategories.get(position));
+            mFragments.add(fragment);
+        }
+        return fragment;
     }
 
     @Override
@@ -39,11 +45,11 @@ public class KaiyanViewpagerAdapter extends FragmentPagerAdapter {
     }
 
     public void setDatas(List<KaiyanCategory> kaiyanCategories) {
-        mKaiyanCategories = kaiyanCategories;
-        mFragments = new ArrayList<>();
-        for (KaiyanCategory category : mKaiyanCategories) {
-            mFragments.add(KaiyanCategoryFragment.newInstance(category));
-        }
+        mKaiyanCategories.clear();
+        mFragments.clear();
+
+        mKaiyanCategories.addAll(kaiyanCategories);
+        mFragments.addAll(Collections.<Fragment>nCopies(kaiyanCategories.size(), null));
         notifyDataSetChanged();
     }
 }
