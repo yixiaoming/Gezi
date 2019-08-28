@@ -5,18 +5,13 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.Observer;
 
 import org.miles.kaiyan.R;
-import org.miles.kaiyan.category.KaiyanCategoryFragment;
 import org.miles.kaiyan.databinding.KaiyanFragmentBinding;
 import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class KaiyanFragment

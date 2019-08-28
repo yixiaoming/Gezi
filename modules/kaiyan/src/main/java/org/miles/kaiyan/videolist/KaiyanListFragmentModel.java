@@ -1,4 +1,4 @@
-package org.miles.kaiyan.category;
+package org.miles.kaiyan.videolist;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,13 +13,13 @@ import java.util.List;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class KaiyanCategoryFragmentModel extends ViewModel {
+public class KaiyanListFragmentModel extends ViewModel {
 
     private MutableLiveData<List<KaiyanVideoItem>> mKaiyanVideoDatas;
     private KaiyanApi mKaiyanApi;
     private long mCategoryId;
 
-    public KaiyanCategoryFragmentModel() {
+    public KaiyanListFragmentModel() {
         mKaiyanVideoDatas = new MutableLiveData<>();
         mKaiyanApi = KaiyanDataSource.api().kaiyanApi();
     }

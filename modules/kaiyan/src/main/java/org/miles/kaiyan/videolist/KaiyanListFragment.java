@@ -1,4 +1,4 @@
-package org.miles.kaiyan.category;
+package org.miles.kaiyan.videolist;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,8 +16,8 @@ import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
 
-public class KaiyanCategoryFragment
-        extends BaseViewModelFragment<KaiyanCategoryFragmentBinding, KaiyanCategoryFragmentModel> {
+public class KaiyanListFragment
+        extends BaseViewModelFragment<KaiyanCategoryFragmentBinding, KaiyanListFragmentModel> {
 
     public static final String PARAM_CATEGORY_ID = "id";
     public static final String PARAM_CATEGORY_NAME = "name";
@@ -25,10 +25,10 @@ public class KaiyanCategoryFragment
     private long mCategoryId;
     private String mCategoryName;
 
-    private KaiyanVideoListAdapter mKaiyanVideoListAdapter;
+    private KaiyanListRecyclerAdapter mKaiyanVideoListAdapter;
 
-    public static KaiyanCategoryFragment newInstance(KaiyanCategory category) {
-        KaiyanCategoryFragment fragment = new KaiyanCategoryFragment();
+    public static KaiyanListFragment newInstance(KaiyanCategory category) {
+        KaiyanListFragment fragment = new KaiyanListFragment();
         fragment.setArguments(new Bundle());
         fragment.getArguments().putLong(PARAM_CATEGORY_ID, category.id);
         fragment.getArguments().putString(PARAM_CATEGORY_NAME, category.name);
@@ -41,8 +41,8 @@ public class KaiyanCategoryFragment
     }
 
     @Override
-    protected Class<KaiyanCategoryFragmentModel> getViewModelClass() {
-        return KaiyanCategoryFragmentModel.class;
+    protected Class<KaiyanListFragmentModel> getViewModelClass() {
+        return KaiyanListFragmentModel.class;
     }
 
     @Override
@@ -57,7 +57,7 @@ public class KaiyanCategoryFragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (mKaiyanVideoListAdapter == null) {
-            mKaiyanVideoListAdapter = new KaiyanVideoListAdapter();
+            mKaiyanVideoListAdapter = new KaiyanListRecyclerAdapter();
         }
         mBinding.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         mBinding.recyclerview.setAdapter(mKaiyanVideoListAdapter);

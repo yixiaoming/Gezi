@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.miles.kaiyan.category.KaiyanCategoryFragment;
+import org.miles.kaiyan.videolist.KaiyanListFragment;
 import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class KaiyanViewpagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Fragment fragment = mFragments.get(position);
         if (fragment == null) {
-            fragment = KaiyanCategoryFragment.newInstance(mKaiyanCategories.get(position));
+            fragment = KaiyanListFragment.newInstance(mKaiyanCategories.get(position));
             mFragments.add(fragment);
         }
         return fragment;
