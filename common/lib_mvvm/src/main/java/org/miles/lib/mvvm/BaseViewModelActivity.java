@@ -12,13 +12,13 @@ import androidx.lifecycle.ViewModelProviders;
 public abstract class BaseViewModelActivity<V extends ViewDataBinding, M extends ViewModel>
         extends AppCompatActivity {
 
-    protected V mBinding;
+    protected V mView;
     protected M mModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, getLayoutId());
+        mView = DataBindingUtil.setContentView(this, getLayoutId());
         mModel = ViewModelProviders.of(this).get(getViewModelClass());
     }
 

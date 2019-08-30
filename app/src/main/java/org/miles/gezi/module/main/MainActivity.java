@@ -32,11 +32,11 @@ public class MainActivity extends BaseViewModelActivity<ActivityMainBinding, Mai
     }
 
     private void initToolbar() {
-        setSupportActionBar(mBinding.toolbar);
+        setSupportActionBar(mView.toolbar);
     }
 
     private void initViews() {
-        mBinding.bottomNavigation.setOnNavigationItemSelectedListener(this);
+        mView.bottomNavigation.setOnNavigationItemSelectedListener(this);
     }
 
     @Override

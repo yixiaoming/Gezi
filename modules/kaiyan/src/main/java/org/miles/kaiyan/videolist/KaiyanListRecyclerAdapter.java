@@ -49,7 +49,7 @@ public class KaiyanListRecyclerAdapter
 
         @Override
         public void bind(KaiyanVideoItem data) {
-            mBinding.title.setText(data.data.title);
+            mView.title.setText(data.data.title);
         }
     }
 }

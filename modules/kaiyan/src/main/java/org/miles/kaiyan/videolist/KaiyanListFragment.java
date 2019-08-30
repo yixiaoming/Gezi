@@ -58,18 +58,18 @@ public class KaiyanListFragment
         if (mKaiyanVideoListAdapter == null) {
             mKaiyanVideoListAdapter = new KaiyanListRecyclerAdapter();
         }
-        mBinding.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        mBinding.recyclerview.setAdapter(mKaiyanVideoListAdapter);
+        mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        mView.recyclerview.setAdapter(mKaiyanVideoListAdapter);
         mModel.getKaiyanVideoDatas().observe(this, new Observer<List<KaiyanVideoItem>>() {
             @Override
             public void onChanged(List<KaiyanVideoItem> kaiyanVideoItems) {
                 if (kaiyanVideoItems == null || kaiyanVideoItems.size() == 0) {
-                    mBinding.emptyView.setVisibility(View.VISIBLE);
-                    mBinding.recyclerview.setVisibility(View.GONE);
+                    mView.emptyView.setVisibility(View.VISIBLE);
+                    mView.recyclerview.setVisibility(View.GONE);
                     return;
                 }
-                mBinding.emptyView.setVisibility(View.GONE);
-                mBinding.recyclerview.setVisibility(View.VISIBLE);
+                mView.emptyView.setVisibility(View.GONE);
+                mView.recyclerview.setVisibility(View.VISIBLE);
                 mKaiyanVideoListAdapter.setDatas(kaiyanVideoItems);
             }
         });

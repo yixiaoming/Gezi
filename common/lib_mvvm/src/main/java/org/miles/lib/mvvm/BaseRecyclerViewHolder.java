@@ -9,18 +9,18 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-public abstract class BaseRecyclerViewHolder<B extends ViewDataBinding, D>
+public abstract class BaseRecyclerViewHolder<V extends ViewDataBinding, D>
         extends RecyclerView.ViewHolder {
 
-    protected B mBinding;
+    protected V mView;
 
-    protected BaseRecyclerViewHolder(@NonNull B binding) {
-        super(binding.getRoot());
-        mBinding = binding;
+    protected BaseRecyclerViewHolder(@NonNull V view) {
+        super(view.getRoot());
+        mView = view;
     }
 
     protected BaseRecyclerViewHolder(@NonNull ViewGroup parent, @LayoutRes int layoutId) {
-        this((B) DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+        this((V) DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                 layoutId, parent, false));
     }
 

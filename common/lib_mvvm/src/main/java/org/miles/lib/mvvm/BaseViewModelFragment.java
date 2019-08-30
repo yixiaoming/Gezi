@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 public abstract class BaseViewModelFragment<V extends ViewDataBinding, M extends ViewModel>
         extends Fragment {
 
-    protected V mBinding;
+    protected V mView;
     protected M mModel;
 
     @Override
@@ -28,8 +28,8 @@ public abstract class BaseViewModelFragment<V extends ViewDataBinding, M extends
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
-        return mBinding.getRoot();
+        mView = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+        return mView.getRoot();
     }
 
     protected abstract int getLayoutId();
