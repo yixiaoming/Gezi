@@ -36,6 +36,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(":common:lib_room")
+    implementation project(":common:lib_log")
 
 //    implementation common.room
 //    annotationProcessor common.roomProcessor

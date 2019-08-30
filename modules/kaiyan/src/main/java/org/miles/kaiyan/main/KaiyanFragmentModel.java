@@ -1,5 +1,7 @@
 package org.miles.kaiyan.main;
 
+import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -7,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 import org.miles.lib.data.kaiyan.KaiyanDataSource;
 import org.miles.lib.data.kaiyan.api.KaiyanApi;
 import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
+import org.miles.lib.log.Logger;
 
 import java.util.List;
 
@@ -30,8 +33,14 @@ public class KaiyanFragmentModel extends ViewModel {
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<List<KaiyanCategory>>() {
                     @Override
-                    public void accept(List<KaiyanCategory> kaiyanCategories) throws Exception {
+                    public void accept(List<KaiyanCategory> kaiyanCategories) {
                         mKaiyanCategories.postValue(kaiyanCategories);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) {
+                        Logger.d(TAG, throwable.getMessage());
+                        mKaiyanCategories.postValue(null);
                     }
                 });
     }

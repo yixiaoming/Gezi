@@ -1,6 +1,7 @@
 include ':app'
 include ':modules:kaiyan'
 include ':lib_data'
+include ':common:lib_log'
 include ':common:lib_room'
 include ':common:lib_mvvm'
 include ':common:lib_widget'

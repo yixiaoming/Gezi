@@ -2,6 +2,7 @@ package org.miles.kaiyan.main;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +48,13 @@ public class KaiyanFragment
         mModel.getKaiyanCategories().observe(this, new Observer<List<KaiyanCategory>>() {
             @Override
             public void onChanged(List<KaiyanCategory> kaiyanCategories) {
+                if (kaiyanCategories == null || kaiyanCategories.size() == 0) {
+                    mBinding.emptyView.setVisibility(View.VISIBLE);
+                    mBinding.viewpager.setVisibility(View.GONE);
+                    return;
+                }
+                mBinding.emptyView.setVisibility(View.GONE);
+                mBinding.viewpager.setVisibility(View.VISIBLE);
                 mViewPagerAdapter.setDatas(kaiyanCategories);
             }
         });

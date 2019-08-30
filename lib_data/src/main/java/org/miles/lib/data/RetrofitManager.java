@@ -1,9 +1,12 @@
 package org.miles.lib.data;
 
 import org.miles.lib.data.kaiyan.api.KaiyanApi;
+import org.miles.lib.log.Logger;
 
 import java.io.IOException;
 
+import io.reactivex.functions.Consumer;
+import io.reactivex.plugins.RxJavaPlugins;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -14,6 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitManager {
 
+    public static final String TAG = "RetrofitManager";
+
     public static final String UA_KEY = "User-Agent";
     public static final String UA_VALUE = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)";
 
@@ -23,6 +28,12 @@ public class RetrofitManager {
     private KaiyanApi mKaiyanApi;
 
     private RetrofitManager() {
+        RxJavaPlugins.setErrorHandler(new Consumer<Throwable>() {
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                Logger.d(TAG, "accept: " + throwable);
+            }
+        });
         if (mOkHttpClient == null) {
             mOkHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new Interceptor() {

@@ -19,11 +19,11 @@ import java.util.List;
 public class KaiyanListFragment
         extends BaseViewModelFragment<KaiyanCategoryFragmentBinding, KaiyanListFragmentModel> {
 
+    public static final String TAG = "KaiyanListFragment";
+
     public static final String PARAM_CATEGORY_ID = "id";
-    public static final String PARAM_CATEGORY_NAME = "name";
 
     private long mCategoryId;
-    private String mCategoryName;
 
     private KaiyanListRecyclerAdapter mKaiyanVideoListAdapter;
 
@@ -31,7 +31,6 @@ public class KaiyanListFragment
         KaiyanListFragment fragment = new KaiyanListFragment();
         fragment.setArguments(new Bundle());
         fragment.getArguments().putLong(PARAM_CATEGORY_ID, category.id);
-        fragment.getArguments().putString(PARAM_CATEGORY_NAME, category.name);
         return fragment;
     }
 
@@ -48,8 +47,8 @@ public class KaiyanListFragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        assert getArguments() != null;
         mCategoryId = getArguments().getLong(PARAM_CATEGORY_ID);
-        mCategoryName = getArguments().getString(PARAM_CATEGORY_NAME);
         mModel.setCategoryId(mCategoryId);
     }
 
@@ -64,6 +63,13 @@ public class KaiyanListFragment
         mModel.getKaiyanVideoDatas().observe(this, new Observer<List<KaiyanVideoItem>>() {
             @Override
             public void onChanged(List<KaiyanVideoItem> kaiyanVideoItems) {
+                if (kaiyanVideoItems == null || kaiyanVideoItems.size() == 0) {
+                    mBinding.emptyView.setVisibility(View.VISIBLE);
+                    mBinding.recyclerview.setVisibility(View.GONE);
+                    return;
+                }
+                mBinding.emptyView.setVisibility(View.GONE);
+                mBinding.recyclerview.setVisibility(View.VISIBLE);
                 mKaiyanVideoListAdapter.setDatas(kaiyanVideoItems);
             }
         });

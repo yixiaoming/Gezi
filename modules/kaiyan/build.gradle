@@ -48,6 +48,7 @@ dependencies {
 
     implementation project(":lib_data")
     implementation project(":common:lib_mvvm")
+    implementation project(":common:lib_log")
 
     implementation common.design
 

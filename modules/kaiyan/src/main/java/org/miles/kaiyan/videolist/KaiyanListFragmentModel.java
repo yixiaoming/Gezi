@@ -1,5 +1,7 @@
 package org.miles.kaiyan.videolist;
 
+import android.annotation.SuppressLint;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -20,25 +22,35 @@ public class KaiyanListFragmentModel extends ViewModel {
     private long mCategoryId;
 
     public KaiyanListFragmentModel() {
-        mKaiyanVideoDatas = new MutableLiveData<>();
         mKaiyanApi = KaiyanDataSource.api().kaiyanApi();
+        mKaiyanVideoDatas = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<KaiyanVideoItem>> getKaiyanVideoDatas() {
         return mKaiyanVideoDatas;
     }
 
+    @SuppressLint("CheckResult")
     public void initDatas() {
         mKaiyanApi.getVideoList(mCategoryId)
                 .subscribeOn(Schedulers.io())
-                .observeOn(Schedulers.io())
-                .doOnNext(new Consumer<KaiyanVideoList>() {
+                .doOnError(new Consumer<Throwable>() {
                     @Override
-                    public void accept(KaiyanVideoList kaiyanVideoList) throws Exception {
-                        mKaiyanVideoDatas.postValue(kaiyanVideoList.itemList);
+                    public void accept(Throwable throwable) {
+
                     }
                 })
-                .subscribe();
+                .subscribe(new Consumer<KaiyanVideoList>() {
+                    @Override
+                    public void accept(KaiyanVideoList kaiyanVideoList) {
+                        mKaiyanVideoDatas.postValue(kaiyanVideoList.itemList);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) {
+                        mKaiyanVideoDatas.postValue(null);
+                    }
+                });
     }
 
     public void setCategoryId(long categoryId) {
