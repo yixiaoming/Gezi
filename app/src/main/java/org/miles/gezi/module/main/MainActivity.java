@@ -17,8 +17,8 @@ public class MainActivity extends BaseViewModelActivity<ActivityMainBinding, Mai
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initToolbar();
         initViews();
+        initObservers();
     }
 
     @Override
@@ -31,16 +31,16 @@ public class MainActivity extends BaseViewModelActivity<ActivityMainBinding, Mai
         return MainViewModel.class;
     }
 
-    private void initToolbar() {
-        setSupportActionBar(mView.toolbar);
-    }
-
     private void initViews() {
         mView.bottomNavigation.setOnNavigationItemSelectedListener(this);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return true;
+        return mModel.showFragment(item.getItemId(), R.id.main_content, getSupportFragmentManager());
+    }
+
+    private void initObservers() {
+
     }
 }

@@ -37,6 +37,12 @@ public class KaiyanListFragmentModel extends ViewModel {
                 .subscribe(new Consumer<KaiyanVideoList>() {
                     @Override
                     public void accept(KaiyanVideoList kaiyanVideoList) {
+                        for (int i = kaiyanVideoList.itemList.size() - 1; i >= 0; i--) {
+                            KaiyanVideoItem item = kaiyanVideoList.itemList.get(i);
+                            if (!isValid(item)) {
+                                kaiyanVideoList.itemList.remove(item);
+                            }
+                        }
                         mKaiyanVideoDatas.postValue(kaiyanVideoList.itemList);
                     }
                 }, new Consumer<Throwable>() {
@@ -49,5 +55,11 @@ public class KaiyanListFragmentModel extends ViewModel {
 
     public void setCategoryId(long categoryId) {
         mCategoryId = categoryId;
+    }
+
+    private boolean isValid(KaiyanVideoItem item) {
+        return item != null && item.data != null && item.data.author != null
+                && item.data.author.name != null && item.data.author.icon != null
+                && item.data.cover != null;
     }
 }

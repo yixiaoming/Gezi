@@ -1,6 +1,5 @@
 package org.miles.kaiyan.videolist;
 
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -18,11 +17,11 @@ import java.util.List;
 public class KaiyanListRecyclerAdapter
         extends RecyclerView.Adapter<KaiyanListRecyclerAdapter.KaiyanCategoryViewHolder> {
 
-    private List<KaiyanVideoItem> mKaiyanVideoItems = new ArrayList<>();
+    private List<KaiyanVideoItem> mDatas = new ArrayList<>();
 
     public void setDatas(List<KaiyanVideoItem> kaiyanVideoItems) {
-        mKaiyanVideoItems.clear();
-        mKaiyanVideoItems.addAll(kaiyanVideoItems);
+        mDatas.clear();
+        mDatas.addAll(kaiyanVideoItems);
         notifyDataSetChanged();
     }
 
@@ -34,12 +33,12 @@ public class KaiyanListRecyclerAdapter
 
     @Override
     public void onBindViewHolder(@NonNull KaiyanCategoryViewHolder holder, int position) {
-        holder.bind(mKaiyanVideoItems.get(position));
+        holder.bind(mDatas.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mKaiyanVideoItems.size();
+        return mDatas.size();
     }
 
     class KaiyanCategoryViewHolder
@@ -49,18 +48,8 @@ public class KaiyanListRecyclerAdapter
             super(parent, layoutId);
         }
 
-        private boolean isValid(KaiyanVideoItem item) {
-            return item != null && item.data != null && item.data.author != null
-                    && item.data.author.name != null && item.data.author.icon != null
-                    && item.data.cover != null;
-        }
-
         @Override
         public void bind(KaiyanVideoItem item) {
-            if (!isValid(item)) {
-                mView.getRoot().setVisibility(View.GONE);
-                return;
-            }
             GlideApp.with(mView.getRoot())
                     .load(item.data.author.icon)
                     .fitCenter()

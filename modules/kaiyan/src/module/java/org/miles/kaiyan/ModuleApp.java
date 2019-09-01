@@ -6,6 +6,7 @@ import android.content.Context;
 import org.miles.lib.data.DataManager;
 
 public class ModuleApp extends Application {
+
     private static Context sAppContext;
 
     @Override
