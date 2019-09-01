@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:layout_marginTop="@dimen/video_item_margin">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="title" />
+        <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+            android:id="@+id/videoplayer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/video_player_height"
+            android:src="@drawable/ic_launcher_background" />
 
+        <LinearLayout
+            android:id="@+id/video_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/video_item_control_height"
+            android:layout_below="@id/videoplayer"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/author_logo"
+                android:layout_width="@dimen/video_item_author_logo"
+                android:layout_height="@dimen/video_item_author_logo"
+                android:layout_marginStart="@dimen/video_item_padding"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/video_item_author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="author" />
+
+            <TextView
+                android:id="@+id/video_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="date" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px_1"
+            android:layout_below="@id/video_info_layout"
+            android:background="@color/video_item_divider" />
     </RelativeLayout>
+
 </layout>

@@ -38,9 +38,6 @@ dependencies {
     implementation project(":common:lib_room")
     implementation project(":common:lib_log")
 
-//    implementation common.room
-//    annotationProcessor common.roomProcessor
-
     implementation common.retrofit
     implementation common.retrofitJson
     implementation common.retrofitRxjava

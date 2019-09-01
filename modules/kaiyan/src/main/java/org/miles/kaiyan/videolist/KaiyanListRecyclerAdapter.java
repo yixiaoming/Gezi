@@ -1,5 +1,6 @@
 package org.miles.kaiyan.videolist;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.KaiyanVideoItemLayoutBinding;
 import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
+import org.miles.lib.glide.GlideApp;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
 import java.util.ArrayList;
@@ -47,9 +49,29 @@ public class KaiyanListRecyclerAdapter
             super(parent, layoutId);
         }
 
+        private boolean isValid(KaiyanVideoItem item) {
+            return item != null && item.data != null && item.data.author != null
+                    && item.data.author.name != null && item.data.author.icon != null
+                    && item.data.cover != null;
+        }
+
         @Override
-        public void bind(KaiyanVideoItem data) {
-            mView.title.setText(data.data.title);
+        public void bind(KaiyanVideoItem item) {
+            if (!isValid(item)) {
+                mView.getRoot().setVisibility(View.GONE);
+                return;
+            }
+            GlideApp.with(mView.getRoot())
+                    .load(item.data.author.icon)
+                    .fitCenter()
+                    .into(mView.authorLogo);
+            mView.videoplayer.setUp(item.data.playUrl, item.data.title);
+            GlideApp.with(mView.getRoot())
+                    .load(item.data.cover.detail)
+                    .fitCenter()
+                    .into(mView.videoplayer.ivThumb);
+            mView.videoItemAuthorName.setText(item.data.author.name);
+            mView.videoItemDate.setText(item.data.date);
         }
     }
 }

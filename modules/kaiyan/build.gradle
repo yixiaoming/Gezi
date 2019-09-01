@@ -49,6 +49,8 @@ dependencies {
     implementation project(":lib_data")
     implementation project(":common:lib_mvvm")
     implementation project(":common:lib_log")
+    implementation project(":common:lib_glide")
+    implementation project(":common:lib_player")
 
     implementation common.design
 
@@ -59,11 +61,6 @@ dependencies {
     implementation common.retrofitJson
     implementation common.retrofitRxjava
 
-    implementation common.jiecaoPlayer
-
     implementation common.rxJava
     implementation common.rxAndroid
-
-    implementation common.glide
-    annotationProcessor common.glideProcessor
 }

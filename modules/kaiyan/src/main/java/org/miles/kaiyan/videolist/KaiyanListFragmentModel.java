@@ -34,12 +34,6 @@ public class KaiyanListFragmentModel extends ViewModel {
     public void initDatas() {
         mKaiyanApi.getVideoList(mCategoryId)
                 .subscribeOn(Schedulers.io())
-                .doOnError(new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) {
-
-                    }
-                })
                 .subscribe(new Consumer<KaiyanVideoList>() {
                     @Override
                     public void accept(KaiyanVideoList kaiyanVideoList) {
@@ -47,7 +41,7 @@ public class KaiyanListFragmentModel extends ViewModel {
                     }
                 }, new Consumer<Throwable>() {
                     @Override
-                    public void accept(Throwable throwable) {
+                    public void accept(Throwable throwable) throws Exception {
                         mKaiyanVideoDatas.postValue(null);
                     }
                 });

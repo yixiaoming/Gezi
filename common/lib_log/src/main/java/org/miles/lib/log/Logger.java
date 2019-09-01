@@ -15,4 +15,11 @@ public class Logger {
         Log.d(APP_TAG + ":" + tag, msg);
     }
 
+    public static void e(String msg) {
+        Log.e(APP_TAG, msg);
+    }
+
+    public static void e(String tag, String msg) {
+        Log.e(APP_TAG + ":" + tag, msg);
+    }
 }

@@ -21,4 +21,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api common.glide
+    annotationProcessor common.glideProcessor
+    annotationProcessor common.androidxAnnotation
 }

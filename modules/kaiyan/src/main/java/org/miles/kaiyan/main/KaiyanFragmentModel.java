@@ -1,5 +1,6 @@
 package org.miles.kaiyan.main;
 
+import android.annotation.SuppressLint;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -28,6 +29,7 @@ public class KaiyanFragmentModel extends ViewModel {
         mKaiyanApi = KaiyanDataSource.api().kaiyanApi();
     }
 
+    @SuppressLint("CheckResult")
     public void initDatas() {
         mKaiyanApi.getCategories()
                 .subscribeOn(Schedulers.io())
@@ -39,7 +41,6 @@ public class KaiyanFragmentModel extends ViewModel {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) {
-                        Logger.d(TAG, throwable.getMessage());
                         mKaiyanCategories.postValue(null);
                     }
                 });
