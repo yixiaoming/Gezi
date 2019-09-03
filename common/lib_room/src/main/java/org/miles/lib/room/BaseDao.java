@@ -55,6 +55,14 @@ public abstract class BaseDao<E> {
         return doSelectOne(query);
     }
 
+    public List<E> selectByPage(int page, int pageSize) {
+        SimpleSQLiteQuery query = new SimpleSQLiteQuery(
+                "SELECT * FROM " + getTableName() + " LIMIT (?,?)",
+                new Object[]{(page - 1) * pageSize, pageSize}
+        );
+        return doSelectList(query);
+    }
+
     protected String getTableName() {
         Class clazz = (Class)
                 ((ParameterizedType) getClass().getSuperclass().getGenericSuperclass())

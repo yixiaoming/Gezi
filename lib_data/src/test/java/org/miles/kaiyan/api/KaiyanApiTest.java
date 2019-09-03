@@ -1,6 +1,9 @@
 package org.miles.kaiyan.api;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.miles.lib.data.RetrofitManager;
 import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
 import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
@@ -10,6 +13,7 @@ import java.util.List;
 
 import io.reactivex.functions.Consumer;
 
+@RunWith(AndroidJUnit4.class)
 public class KaiyanApiTest {
 
     public static final String TAG = "KaiyanApiTest";

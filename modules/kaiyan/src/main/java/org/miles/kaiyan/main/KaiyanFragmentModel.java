@@ -25,8 +25,8 @@ public class KaiyanFragmentModel extends ViewModel {
     private KaiyanApi mKaiyanApi;
 
     public KaiyanFragmentModel() {
-        mKaiyanCategories = new MutableLiveData<>();
         mKaiyanApi = KaiyanDataSource.api().kaiyanApi();
+        mKaiyanCategories = new MutableLiveData<>();
     }
 
     @SuppressLint("CheckResult")

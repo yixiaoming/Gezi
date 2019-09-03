@@ -39,6 +39,8 @@ dependencies {
     implementation common.lifecycle
     annotationProcessor common.lifecycleProcessor
 
+    implementation common.gson
+
     testImplementation test.junit
     testImplementation test.testCore
 

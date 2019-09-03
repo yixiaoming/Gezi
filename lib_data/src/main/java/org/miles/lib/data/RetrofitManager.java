@@ -1,5 +1,6 @@
 package org.miles.lib.data;
 
+import org.miles.lib.data.gank.api.GankApi;
 import org.miles.lib.data.kaiyan.api.KaiyanApi;
 import org.miles.lib.log.Logger;
 
@@ -12,6 +13,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import retrofit2.Retrofit;
+import retrofit2.Retrofit.Builder;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -26,6 +28,7 @@ public class RetrofitManager {
     private OkHttpClient mOkHttpClient;
 
     private KaiyanApi mKaiyanApi;
+    private GankApi mGankApi;
 
     private RetrofitManager() {
         RxJavaPlugins.setErrorHandler(new Consumer<Throwable>() {
@@ -72,5 +75,18 @@ public class RetrofitManager {
             mKaiyanApi = retrofit.create(KaiyanApi.class);
         }
         return mKaiyanApi;
+    }
+
+    public GankApi getGankApi() {
+        if (mGankApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(GankApi.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .client(mOkHttpClient)
+                    .build();
+            mGankApi = retrofit.create(GankApi.class);
+        }
+        return mGankApi;
     }
 }
