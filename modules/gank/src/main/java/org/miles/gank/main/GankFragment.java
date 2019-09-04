@@ -52,10 +52,10 @@ public class GankFragment
 
     private void initObservers() {
         mModel.getGankCategoryes().observe(this,
-                new Observer<List<GankCategoryEntity>>() {
+                new Observer<List<String>>() {
                     @Override
-                    public void onChanged(List<GankCategoryEntity> gankCategoryEntities) {
-                        mGankTabPagerAdapter.setDatas(gankCategoryEntities);
+                    public void onChanged(List<String> categories) {
+                        mGankTabPagerAdapter.setDatas(categories);
                     }
                 });
     }

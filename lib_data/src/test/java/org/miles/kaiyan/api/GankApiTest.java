@@ -53,7 +53,7 @@ public class GankApiTest {
 
     @Test
     public void getContents() {
-        mGankApi.getContents("瞎推荐", 10, 1)
+        mGankApi.getContents("wow", 10, 1)
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<GankBaseEntity<List<GankEntity>>>() {
                     @Override

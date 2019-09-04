@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GankTabPagerAdapter extends FragmentPagerAdapter {
 
-    private List<GankCategoryEntity> mGankCategories;
+    private List<String> mGankCategories;
     private List<GankTabFragment> mGankTabFragments;
 
     public GankTabPagerAdapter(@NonNull FragmentManager fm) {
@@ -24,7 +24,7 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
         mGankTabFragments = new ArrayList<>();
     }
 
-    public void setDatas(List<GankCategoryEntity> gankCategories) {
+    public void setDatas(List<String> gankCategories) {
         mGankCategories.clear();
         mGankTabFragments.clear();
 
@@ -37,8 +37,8 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (mGankTabFragments.get(position) == null) {
-            GankCategoryEntity entity = mGankCategories.get(position);
-            GankTabFragment fragment = GankTabFragment.newInstance(entity);
+            String category = mGankCategories.get(position);
+            GankTabFragment fragment = GankTabFragment.newInstance(category);
             mGankTabFragments.add(position, fragment);
         }
         return mGankTabFragments.get(position);
@@ -52,6 +52,6 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mGankCategories.get(position).name;
+        return mGankCategories.get(position);
     }
 }

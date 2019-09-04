@@ -14,7 +14,7 @@ public abstract class BaseRecyclerViewHolder<V extends ViewDataBinding, D>
 
     protected V mView;
 
-    protected BaseRecyclerViewHolder(@NonNull V view) {
+    private BaseRecyclerViewHolder(@NonNull V view) {
         super(view.getRoot());
         mView = view;
     }
