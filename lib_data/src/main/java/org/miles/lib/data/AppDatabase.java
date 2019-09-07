@@ -9,16 +9,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import org.miles.lib.data.gank.db.GankDao;
-import org.miles.lib.data.gank.entity.GankCategoryEntity;
-import org.miles.lib.data.gank.entity.GankEntity;
-import org.miles.lib.data.gank.entity.GankTabEntity;
+import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
+import org.miles.lib.data.gank.entity.GankTodayItemEntity;
 import org.miles.lib.data.kaiyan.db.KaiyanCategoryDao;
 import org.miles.lib.data.kaiyan.db.KaiyanVideoItemDao;
 import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
 import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
 
-@Database(entities = {KaiyanCategory.class, KaiyanVideoItem.class, GankEntity.class,
-        GankCategoryEntity.class, GankTabEntity.class}, version = 1)
+@Database(entities = {KaiyanCategory.class, KaiyanVideoItem.class, GankTodayItemEntity.class,
+        GankFirstCategoryEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public static final String DB_NAME = "gezi.db";
 

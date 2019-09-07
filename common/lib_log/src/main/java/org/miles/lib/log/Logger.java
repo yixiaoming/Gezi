@@ -22,4 +22,12 @@ public class Logger {
     public static void e(String tag, String msg) {
         Log.e(APP_TAG + ":" + tag, msg);
     }
+
+    public static void e(Throwable throwable) {
+        Log.e(APP_TAG, "", throwable);
+    }
+
+    public static void e(String tag, Throwable throwable) {
+        Log.e(APP_TAG + ":" + tag, "", throwable);
+    }
 }

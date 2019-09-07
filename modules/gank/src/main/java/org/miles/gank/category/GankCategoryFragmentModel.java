@@ -8,30 +8,63 @@ import androidx.lifecycle.ViewModel;
 
 import org.miles.lib.data.RetrofitManager;
 import org.miles.lib.data.gank.api.GankApi;
+import org.miles.lib.data.gank.entity.GankBaseEntity;
+import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
+import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
+import org.miles.lib.log.Logger;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class GankCategoryFragmentModel extends ViewModel {
 
     private GankApi mGankApi;
-    //    private MutableLiveData<List<GankCategoryEntity>> mGankCategories;
-    private MutableLiveData<List<String>> mGankCategories;
-
-    private static String[] DEFAULT_CATEGORIES =
-            new String[]{"福利", "Android", "iOS", "休息视频", "拓展资源", "前端", "all"};
+    private MutableLiveData<List<GankSecondCategoryEntity>> mGankCategories;
 
     public GankCategoryFragmentModel() {
         mGankApi = RetrofitManager.get().getGankApi();
         mGankCategories = new MutableLiveData<>();
     }
 
-    public LiveData<List<String>> getGankCategoryes() {
+    public LiveData<List<GankSecondCategoryEntity>> getGankCategoryes() {
         return mGankCategories;
     }
 
     @SuppressLint("CheckResult")
     public void initDatas() {
-        mGankCategories.postValue(Arrays.asList(DEFAULT_CATEGORIES));
+        mGankApi.getFirstCategores()
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
+                .map(new Function<GankBaseEntity<List<GankFirstCategoryEntity>>,
+                        List<GankSecondCategoryEntity>>() {
+                    @Override
+                    public List<GankSecondCategoryEntity> apply(
+                            GankBaseEntity<List<GankFirstCategoryEntity>> listGankBaseEntity
+                    ) throws Exception {
+                        List<GankSecondCategoryEntity> secondCategoryEntities = new ArrayList<>();
+                        for (GankFirstCategoryEntity entity : listGankBaseEntity.results) {
+                            Response<GankBaseEntity<List<GankSecondCategoryEntity>>> response =
+                                    mGankApi.getSecondCategoriesSync(entity.enName).execute();
+                            secondCategoryEntities.addAll(response.body().results);
+                        }
+                        return secondCategoryEntities;
+                    }
+                })
+                .subscribe(new Consumer<List<GankSecondCategoryEntity>>() {
+                    @Override
+                    public void accept(List<GankSecondCategoryEntity> gankSecondCategoryEntities) throws Exception {
+                        mGankCategories.postValue(gankSecondCategoryEntities);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Logger.e(throwable);
+                    }
+                });
     }
 }

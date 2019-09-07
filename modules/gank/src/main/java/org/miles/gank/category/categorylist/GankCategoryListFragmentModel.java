@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 import org.miles.lib.data.RetrofitManager;
 import org.miles.lib.data.gank.api.GankApi;
 import org.miles.lib.data.gank.entity.GankBaseEntity;
-import org.miles.lib.data.gank.entity.GankEntity;
+import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
 
 import java.util.List;
 
@@ -17,25 +17,25 @@ public class GankCategoryListFragmentModel extends ViewModel {
 
     public static final int DEFAULT_PAGE_SIZE = 20;
     private GankApi mGankApi;
-    private MutableLiveData<List<GankEntity>> mGankEntities;
+    private MutableLiveData<List<GankCategoryItemEntity>> mGankEntities;
 
     public GankCategoryListFragmentModel() {
         mGankApi = RetrofitManager.get().getGankApi();
     }
 
-    public MutableLiveData<List<GankEntity>> getGankEntities() {
+    public MutableLiveData<List<GankCategoryItemEntity>> getGankEntities() {
         if (mGankEntities == null) {
             mGankEntities = new MutableLiveData<>();
         }
         return mGankEntities;
     }
 
-    public void initDatas(String type) {
-        mGankApi.getRandomContents(type, DEFAULT_PAGE_SIZE)
+    public void initDatas(String categoryId, int page) {
+        mGankApi.getCategoryItems(categoryId, DEFAULT_PAGE_SIZE, page)
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<GankBaseEntity<List<GankEntity>>>() {
+                .subscribe(new Consumer<GankBaseEntity<List<GankCategoryItemEntity>>>() {
                     @Override
-                    public void accept(GankBaseEntity<List<GankEntity>> listGankBaseEntity) throws Exception {
+                    public void accept(GankBaseEntity<List<GankCategoryItemEntity>> listGankBaseEntity) throws Exception {
                         mGankEntities.postValue(listGankBaseEntity.results);
                     }
                 }, new Consumer<Throwable>() {

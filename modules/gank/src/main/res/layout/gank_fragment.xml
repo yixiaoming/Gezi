@@ -2,26 +2,34 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="?attr/actionBarSize"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout"
-                app:tabGravity="fill"
-                app:tabMode="scrollable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.appbar.AppBarLayout>
+            <TextView
+                android:id="@+id/today_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="today" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewapger"
+            <TextView
+                android:id="@+id/category_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:text="category" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/gank_fragment_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 </layout>

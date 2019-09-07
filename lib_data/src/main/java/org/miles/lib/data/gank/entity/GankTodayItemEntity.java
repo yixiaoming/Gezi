@@ -12,8 +12,8 @@ import org.miles.lib.room.conversion.ListStringConversion;
 
 import java.util.List;
 
-@Entity(tableName = "t_gank")
-public class GankEntity {
+@Entity
+public class GankTodayItemEntity {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
@@ -36,7 +36,7 @@ public class GankEntity {
 
     @Override
     public String toString() {
-        return "GankEntity{" +
+        return "GankTodayItemEntity{" +
                 "id='" + id + '\'' +
                 ", gankid='" + gankid + '\'' +
                 ", createdAt='" + createdAt + '\'' +

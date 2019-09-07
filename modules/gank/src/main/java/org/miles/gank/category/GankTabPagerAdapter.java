@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.miles.gank.category.categorylist.GankCategoryListFragment;
+import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class GankTabPagerAdapter extends FragmentPagerAdapter {
 
-    private List<String> mGankCategories;
+    private List<GankSecondCategoryEntity> mGankCategories;
     private List<GankCategoryListFragment> mGankCategoryListFragments;
 
     public GankTabPagerAdapter(@NonNull FragmentManager fm) {
@@ -23,7 +24,7 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
         mGankCategoryListFragments = new ArrayList<>();
     }
 
-    public void setDatas(List<String> gankCategories) {
+    public void setDatas(List<GankSecondCategoryEntity> gankCategories) {
         mGankCategories.clear();
         mGankCategoryListFragments.clear();
 
@@ -36,8 +37,8 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (mGankCategoryListFragments.get(position) == null) {
-            String category = mGankCategories.get(position);
-            GankCategoryListFragment fragment = GankCategoryListFragment.newInstance(category);
+            GankSecondCategoryEntity entity = mGankCategories.get(position);
+            GankCategoryListFragment fragment = GankCategoryListFragment.newInstance(entity.categoryId);
             mGankCategoryListFragments.add(position, fragment);
         }
         return mGankCategoryListFragments.get(position);
@@ -51,6 +52,6 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mGankCategories.get(position);
+        return mGankCategories.get(position).title;
     }
 }

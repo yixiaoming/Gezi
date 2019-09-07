@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.GankCategoryItemLayoutBinding;
-import org.miles.lib.data.gank.entity.GankEntity;
+import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import java.util.List;
 public class GankCategoryListRecyclerAdapter
         extends RecyclerView.Adapter<GankCategoryListRecyclerAdapter.GankViewHolder> {
 
-    private List<GankEntity> mDatas = new ArrayList<>();
+    private List<GankCategoryItemEntity> mDatas = new ArrayList<>();
 
-    public void setDatas(List<GankEntity> datas) {
+    public void setDatas(List<GankCategoryItemEntity> datas) {
         mDatas.clear();
         mDatas.addAll(datas);
         notifyDataSetChanged();
@@ -41,15 +41,15 @@ public class GankCategoryListRecyclerAdapter
     }
 
     public class GankViewHolder
-            extends BaseRecyclerViewHolder<GankCategoryItemLayoutBinding, GankEntity> {
+            extends BaseRecyclerViewHolder<GankCategoryItemLayoutBinding, GankCategoryItemEntity> {
 
         public GankViewHolder(@NonNull ViewGroup parent, int layoutId) {
             super(parent, layoutId);
         }
 
         @Override
-        public void bind(GankEntity data) {
-            mView.title.setText(data.desc);
+        public void bind(GankCategoryItemEntity data) {
+            mView.title.setText(data.title);
         }
     }
 }

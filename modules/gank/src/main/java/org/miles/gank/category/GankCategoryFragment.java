@@ -8,29 +8,31 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
 import org.miles.kaiyan.R;
+import org.miles.kaiyan.databinding.GankCategoryFragmentBinding;
 import org.miles.kaiyan.databinding.GankFragmentBinding;
+import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
 
 public class GankCategoryFragment
-        extends BaseViewModelFragment<GankFragmentBinding, GankCategoryFragmentModel> {
+        extends BaseViewModelFragment<GankCategoryFragmentBinding, GankCategoryFragmentModel> {
 
     private GankTabPagerAdapter mGankTabPagerAdapter;
 
-    public static GankCategoryFragment newInstance() {
-        GankCategoryFragment fragment = new GankCategoryFragment();
-        return fragment;
-    }
-
     @Override
     protected int getLayoutId() {
-        return R.layout.gank_fragment;
+        return R.layout.gank_category_fragment;
     }
 
     @Override
     protected Class<GankCategoryFragmentModel> getViewModelClass() {
         return GankCategoryFragmentModel.class;
+    }
+
+    public static GankCategoryFragment newInstance() {
+        GankCategoryFragment fragment = new GankCategoryFragment();
+        return fragment;
     }
 
     @Override
@@ -51,10 +53,10 @@ public class GankCategoryFragment
 
     private void initObservers() {
         mModel.getGankCategoryes().observe(this,
-                new Observer<List<String>>() {
+                new Observer<List<GankSecondCategoryEntity>>() {
                     @Override
-                    public void onChanged(List<String> categories) {
-                        mGankTabPagerAdapter.setDatas(categories);
+                    public void onChanged(List<GankSecondCategoryEntity> gankSecondCategoryEntities) {
+                        mGankTabPagerAdapter.setDatas(gankSecondCategoryEntities);
                     }
                 });
     }

@@ -1,9 +1,7 @@
 package org.miles.gank.today;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +22,7 @@ public class GankTodayFragment
         return GankTodayFragmentModel.class;
     }
 
-    public GankTodayFragment newInstance() {
+    public static GankTodayFragment newInstance() {
         GankTodayFragment fragment = new GankTodayFragment();
         Bundle params = new Bundle();
         // TODO: 19.9.7 add params

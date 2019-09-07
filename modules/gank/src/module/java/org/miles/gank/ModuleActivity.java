@@ -11,19 +11,20 @@ import org.miles.kaiyan.R;
 
 public class ModuleActivity extends AppCompatActivity {
 
-    private GankCategoryFragment mGankCategoryFragment;
-    private String mGankFragmentTag = GankCategoryFragment.class.getSimpleName();
+    private GankFragment mGankFragment;
+    private String mGankFragmentTag = GankFragment.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module_activity);
-        mGankCategoryFragment = (GankCategoryFragment) getSupportFragmentManager().findFragmentByTag(mGankFragmentTag);
-        if (mGankCategoryFragment == null) {
-            mGankCategoryFragment = GankCategoryFragment.newInstance();
+        mGankFragment = (GankFragment) getSupportFragmentManager()
+                .findFragmentByTag(mGankFragmentTag);
+        if (mGankFragment == null) {
+            mGankFragment = GankFragment.newInstance();
         }
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.contentView, mGankCategoryFragment, mGankFragmentTag);
+        transaction.replace(R.id.contentView, mGankFragment, mGankFragmentTag);
         transaction.commit();
     }
 }
