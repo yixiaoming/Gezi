@@ -1,7 +1,6 @@
-package org.miles.gank.main;
+package org.miles.gank.category;
 
 import android.annotation.SuppressLint;
-import android.media.MediaDataSource;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,7 +12,7 @@ import org.miles.lib.data.gank.api.GankApi;
 import java.util.Arrays;
 import java.util.List;
 
-public class GankFragmentModel extends ViewModel {
+public class GankCategoryFragmentModel extends ViewModel {
 
     private GankApi mGankApi;
     //    private MutableLiveData<List<GankCategoryEntity>> mGankCategories;
@@ -22,7 +21,7 @@ public class GankFragmentModel extends ViewModel {
     private static String[] DEFAULT_CATEGORIES =
             new String[]{"福利", "Android", "iOS", "休息视频", "拓展资源", "前端", "all"};
 
-    public GankFragmentModel() {
+    public GankCategoryFragmentModel() {
         mGankApi = RetrofitManager.get().getGankApi();
         mGankCategories = new MutableLiveData<>();
     }

@@ -1,4 +1,4 @@
-package org.miles.gank.itemlist;
+package org.miles.gank.category.categorylist;
 
 import android.view.ViewGroup;
 
@@ -6,15 +6,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankItemLayoutBinding;
+import org.miles.kaiyan.databinding.GankCategoryItemLayoutBinding;
 import org.miles.lib.data.gank.entity.GankEntity;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GankRecyclerAdapter
-        extends RecyclerView.Adapter<GankRecyclerAdapter.GankViewHolder> {
+public class GankCategoryListRecyclerAdapter
+        extends RecyclerView.Adapter<GankCategoryListRecyclerAdapter.GankViewHolder> {
 
     private List<GankEntity> mDatas = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class GankRecyclerAdapter
     @NonNull
     @Override
     public GankViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new GankViewHolder(parent, R.layout.gank_item_layout);
+        return new GankViewHolder(parent, R.layout.gank_category_item_layout);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class GankRecyclerAdapter
     }
 
     public class GankViewHolder
-            extends BaseRecyclerViewHolder<GankItemLayoutBinding, GankEntity> {
+            extends BaseRecyclerViewHolder<GankCategoryItemLayoutBinding, GankEntity> {
 
         public GankViewHolder(@NonNull ViewGroup parent, int layoutId) {
             super(parent, layoutId);

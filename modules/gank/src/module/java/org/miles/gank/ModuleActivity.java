@@ -6,24 +6,24 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.miles.gank.main.GankFragment;
+import org.miles.gank.category.GankCategoryFragment;
 import org.miles.kaiyan.R;
 
 public class ModuleActivity extends AppCompatActivity {
 
-    private GankFragment mGankFragment;
-    private String mGankFragmentTag = GankFragment.class.getSimpleName();
+    private GankCategoryFragment mGankCategoryFragment;
+    private String mGankFragmentTag = GankCategoryFragment.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.module_activity);
-        mGankFragment = (GankFragment) getSupportFragmentManager().findFragmentByTag(mGankFragmentTag);
-        if (mGankFragment == null) {
-            mGankFragment = GankFragment.newInstance();
+        mGankCategoryFragment = (GankCategoryFragment) getSupportFragmentManager().findFragmentByTag(mGankFragmentTag);
+        if (mGankCategoryFragment == null) {
+            mGankCategoryFragment = GankCategoryFragment.newInstance();
         }
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.contentView, mGankFragment, mGankFragmentTag);
+        transaction.replace(R.id.contentView, mGankCategoryFragment, mGankFragmentTag);
         transaction.commit();
     }
 }

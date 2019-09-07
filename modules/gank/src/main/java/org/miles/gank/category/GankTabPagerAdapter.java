@@ -1,4 +1,4 @@
-package org.miles.gank.main;
+package org.miles.gank.category;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,8 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.miles.gank.itemlist.GankTabFragment;
-import org.miles.lib.data.gank.entity.GankCategoryEntity;
+import org.miles.gank.category.categorylist.GankCategoryListFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,32 +15,32 @@ import java.util.List;
 public class GankTabPagerAdapter extends FragmentPagerAdapter {
 
     private List<String> mGankCategories;
-    private List<GankTabFragment> mGankTabFragments;
+    private List<GankCategoryListFragment> mGankCategoryListFragments;
 
     public GankTabPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
         mGankCategories = new ArrayList<>();
-        mGankTabFragments = new ArrayList<>();
+        mGankCategoryListFragments = new ArrayList<>();
     }
 
     public void setDatas(List<String> gankCategories) {
         mGankCategories.clear();
-        mGankTabFragments.clear();
+        mGankCategoryListFragments.clear();
 
         mGankCategories.addAll(gankCategories);
-        mGankTabFragments.addAll(Collections.<GankTabFragment>nCopies(mGankCategories.size(), null));
+        mGankCategoryListFragments.addAll(Collections.<GankCategoryListFragment>nCopies(mGankCategories.size(), null));
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        if (mGankTabFragments.get(position) == null) {
+        if (mGankCategoryListFragments.get(position) == null) {
             String category = mGankCategories.get(position);
-            GankTabFragment fragment = GankTabFragment.newInstance(category);
-            mGankTabFragments.add(position, fragment);
+            GankCategoryListFragment fragment = GankCategoryListFragment.newInstance(category);
+            mGankCategoryListFragments.add(position, fragment);
         }
-        return mGankTabFragments.get(position);
+        return mGankCategoryListFragments.get(position);
     }
 
     @Override

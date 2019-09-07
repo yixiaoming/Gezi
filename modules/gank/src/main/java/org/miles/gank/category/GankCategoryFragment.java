@@ -1,4 +1,4 @@
-package org.miles.gank.main;
+package org.miles.gank.category;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,18 +9,17 @@ import androidx.lifecycle.Observer;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.GankFragmentBinding;
-import org.miles.lib.data.gank.entity.GankCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
 
-public class GankFragment
-        extends BaseViewModelFragment<GankFragmentBinding, GankFragmentModel> {
+public class GankCategoryFragment
+        extends BaseViewModelFragment<GankFragmentBinding, GankCategoryFragmentModel> {
 
     private GankTabPagerAdapter mGankTabPagerAdapter;
 
-    public static GankFragment newInstance() {
-        GankFragment fragment = new GankFragment();
+    public static GankCategoryFragment newInstance() {
+        GankCategoryFragment fragment = new GankCategoryFragment();
         return fragment;
     }
 
@@ -30,8 +29,8 @@ public class GankFragment
     }
 
     @Override
-    protected Class<GankFragmentModel> getViewModelClass() {
-        return GankFragmentModel.class;
+    protected Class<GankCategoryFragmentModel> getViewModelClass() {
+        return GankCategoryFragmentModel.class;
     }
 
     @Override

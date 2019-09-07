@@ -1,4 +1,4 @@
-package org.miles.gank.itemlist;
+package org.miles.gank.category.categorylist;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,13 +13,13 @@ import java.util.List;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class GankTabFragmentModel extends ViewModel {
+public class GankCategoryListFragmentModel extends ViewModel {
 
     public static final int DEFAULT_PAGE_SIZE = 20;
     private GankApi mGankApi;
     private MutableLiveData<List<GankEntity>> mGankEntities;
 
-    public GankTabFragmentModel() {
+    public GankCategoryListFragmentModel() {
         mGankApi = RetrofitManager.get().getGankApi();
     }
 

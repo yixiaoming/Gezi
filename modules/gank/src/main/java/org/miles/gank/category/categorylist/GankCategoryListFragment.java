@@ -1,4 +1,4 @@
-package org.miles.gank.itemlist;
+package org.miles.gank.category.categorylist;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,21 +9,21 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankTabFragmentBinding;
+import org.miles.kaiyan.databinding.GankCategoryFragmentBinding;
 import org.miles.lib.data.gank.entity.GankEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
 
-public class GankTabFragment
-        extends BaseViewModelFragment<GankTabFragmentBinding, GankTabFragmentModel> {
+public class GankCategoryListFragment
+        extends BaseViewModelFragment<GankCategoryFragmentBinding, GankCategoryListFragmentModel> {
 
     public static final String PARAM_CATEGORY = "param_category_type";
     private String mCategory;
-    private GankRecyclerAdapter mGankRecyclerAdapter;
+    private GankCategoryListRecyclerAdapter mGankCategoryListRecyclerAdapter;
 
-    public static GankTabFragment newInstance(String category) {
-        GankTabFragment fragment = new GankTabFragment();
+    public static GankCategoryListFragment newInstance(String category) {
+        GankCategoryListFragment fragment = new GankCategoryListFragment();
         Bundle params = new Bundle();
         params.putString(PARAM_CATEGORY, category);
         fragment.setArguments(params);
@@ -32,12 +32,12 @@ public class GankTabFragment
 
     @Override
     protected int getLayoutId() {
-        return R.layout.gank_tab_fragment;
+        return R.layout.gank_category_fragment;
     }
 
     @Override
-    protected Class<GankTabFragmentModel> getViewModelClass() {
-        return GankTabFragmentModel.class;
+    protected Class<GankCategoryListFragmentModel> getViewModelClass() {
+        return GankCategoryListFragmentModel.class;
     }
 
     @Override
@@ -58,11 +58,11 @@ public class GankTabFragment
     }
 
     private void initViews() {
-        if (mGankRecyclerAdapter == null) {
-            mGankRecyclerAdapter = new GankRecyclerAdapter();
+        if (mGankCategoryListRecyclerAdapter == null) {
+            mGankCategoryListRecyclerAdapter = new GankCategoryListRecyclerAdapter();
         }
         mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        mView.recyclerview.setAdapter(mGankRecyclerAdapter);
+        mView.recyclerview.setAdapter(mGankCategoryListRecyclerAdapter);
     }
 
     private void initObservers() {
@@ -73,7 +73,7 @@ public class GankTabFragment
                         if (gankEntities == null || gankEntities.size() == 0) {
                             // TODO: 19.9.5 显示空view
                         } else {
-                            mGankRecyclerAdapter.setDatas(gankEntities);
+                            mGankCategoryListRecyclerAdapter.setDatas(gankEntities);
                         }
                     }
                 }
