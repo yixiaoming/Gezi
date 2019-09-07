@@ -4,9 +4,10 @@ package org.miles.lib.data.gank.api;
 import org.miles.lib.data.gank.entity.GankBaseEntity;
 import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
 import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
-import org.miles.lib.data.gank.entity.GankTodayItemEntity;
 import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
+import org.miles.lib.data.gank.entity.GankTodayItemEntity;
 
+import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.Observable;

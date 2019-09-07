@@ -5,13 +5,19 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.GankTodayFragmentBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
+import java.util.List;
+
 public class GankTodayFragment
         extends BaseViewModelFragment<GankTodayFragmentBinding, GankTodayFragmentModel> {
+
+    private GankTodayPagerAdapter mGankTodayPagerAdapter;
+
     @Override
     protected int getLayoutId() {
         return R.layout.gank_today_fragment;
@@ -35,13 +41,24 @@ public class GankTodayFragment
         super.onViewCreated(view, savedInstanceState);
         initViews();
         initObservers();
+        mModel.initDatas();
     }
 
     private void initViews() {
-
+        if (mGankTodayPagerAdapter == null) {
+            mGankTodayPagerAdapter = new GankTodayPagerAdapter(getFragmentManager());
+        }
+        mView.viewpager.setAdapter(mGankTodayPagerAdapter);
+        mView.tablayout.setupWithViewPager(mView.viewpager);
     }
 
     private void initObservers() {
-
+        mModel.getCategories().observe(this,
+                new Observer<List<String>>() {
+                    @Override
+                    public void onChanged(List<String> categories) {
+                        mGankTodayPagerAdapter.setDatas(categories);
+                    }
+                });
     }
 }

@@ -53,6 +53,7 @@ dependencies {
     implementation project(":common:lib_player")
 
     implementation common.design
+    implementation common.constraintlayout
 
     implementation common.lifecycle
     annotationProcessor common.lifecycleProcessor

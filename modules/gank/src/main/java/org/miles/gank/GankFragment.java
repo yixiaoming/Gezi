@@ -47,6 +47,7 @@ public class GankFragment
         super.onViewCreated(view, savedInstanceState);
         initViews();
         initObservers();
+        showFragment(TODAY_FRAGMENT_TAG);
     }
 
     private void initViews() {
@@ -97,5 +98,6 @@ public class GankFragment
         }
         transaction.show(willShowFragment);
         transaction.commit();
+        mCurrentFragment = willShowFragment;
     }
 }

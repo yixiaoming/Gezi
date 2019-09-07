@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.GankCategoryFragmentBinding;
-import org.miles.kaiyan.databinding.GankFragmentBinding;
 import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
