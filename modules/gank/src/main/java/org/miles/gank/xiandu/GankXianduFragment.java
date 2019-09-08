@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.GankCategoryFragmentBinding;
+import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
 import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
@@ -51,12 +52,19 @@ public class GankXianduFragment
     }
 
     private void initObservers() {
-        mModel.getGankCategoryes().observe(this,
-                new Observer<List<GankSecondCategoryEntity>>() {
+        mModel.getGankFirstCategories().observe(this,
+                new Observer<List<GankFirstCategoryEntity>>() {
                     @Override
-                    public void onChanged(List<GankSecondCategoryEntity> gankSecondCategoryEntities) {
-                        mGankTabPagerAdapter.setDatas(gankSecondCategoryEntities);
+                    public void onChanged(List<GankFirstCategoryEntity> gankFirstCategoryEntities) {
+                        mGankTabPagerAdapter.setDatas(gankFirstCategoryEntities);
                     }
                 });
+//        mModel.getGankCategoryes().observe(this,
+//                new Observer<List<GankSecondCategoryEntity>>() {
+//                    @Override
+//                    public void onChanged(List<GankSecondCategoryEntity> gankSecondCategoryEntities) {
+//                        mGankTabPagerAdapter.setDatas(gankSecondCategoryEntities);
+//                    }
+//                });
     }
 }

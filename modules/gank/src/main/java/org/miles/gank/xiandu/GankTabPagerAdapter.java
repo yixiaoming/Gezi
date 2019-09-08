@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.miles.gank.xiandu.xiandulist.GankXianduListFragment;
+import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
 import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class GankTabPagerAdapter extends FragmentPagerAdapter {
 
-    private List<GankSecondCategoryEntity> mGankCategories;
+    private List<GankFirstCategoryEntity> mGankCategories;
     private List<GankXianduListFragment> mGankXianduListFragments;
 
     public GankTabPagerAdapter(@NonNull FragmentManager fm) {
@@ -24,7 +25,7 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
         mGankXianduListFragments = new ArrayList<>();
     }
 
-    public void setDatas(List<GankSecondCategoryEntity> gankCategories) {
+    public void setDatas(List<GankFirstCategoryEntity> gankCategories) {
         mGankCategories.clear();
         mGankXianduListFragments.clear();
 
@@ -37,8 +38,8 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (mGankXianduListFragments.get(position) == null) {
-            GankSecondCategoryEntity entity = mGankCategories.get(position);
-            GankXianduListFragment fragment = GankXianduListFragment.newInstance(entity.categoryId);
+            GankFirstCategoryEntity entity = mGankCategories.get(position);
+            GankXianduListFragment fragment = GankXianduListFragment.newInstance(entity.enName);
             mGankXianduListFragments.add(position, fragment);
         }
         return mGankXianduListFragments.get(position);
@@ -52,6 +53,6 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return mGankCategories.get(position).title;
+        return mGankCategories.get(position).name;
     }
 }

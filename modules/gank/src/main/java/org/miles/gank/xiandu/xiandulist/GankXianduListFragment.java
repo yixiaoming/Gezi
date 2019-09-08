@@ -1,7 +1,11 @@
 package org.miles.gank.xiandu.xiandulist;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.GankCategoryListFragmentBinding;
 import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
+import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
@@ -54,7 +59,7 @@ public class GankXianduListFragment
         super.onViewCreated(view, savedInstanceState);
         initViews();
         initObservers();
-        mModel.initDatas(mCategory, 1);
+        mModel.initDatas(mCategory);
     }
 
     private void initViews() {
@@ -66,13 +71,43 @@ public class GankXianduListFragment
     }
 
     private void initObservers() {
+        mModel.getSecondCategories().observe(this,
+                new Observer<List<GankSecondCategoryEntity>>() {
+                    @Override
+                    public void onChanged(List<GankSecondCategoryEntity> gankSecondCategoryEntities) {
+                        if (gankSecondCategoryEntities != null && gankSecondCategoryEntities.size() > 0) {
+                            mView.scrollTabs.setVisibility(View.VISIBLE);
+                            for (final GankSecondCategoryEntity entity : gankSecondCategoryEntities) {
+                                TextView textView = new TextView(getContext());
+                                textView.setText(entity.title);
+                                ViewGroup.MarginLayoutParams params =
+                                        new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                                textView.setPadding(20, 10, 20, 10);
+                                textView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        mModel.loadCategoryList(entity.categoryId, 1);
+                                    }
+                                });
+                                mView.scrollTabs.addView(textView, params);
+                            }
+                            mModel.loadCategoryList(gankSecondCategoryEntities.get(0).categoryId, 1);
+                        } else {
+                            mView.scrollTabs.setVisibility(View.GONE);
+                        }
+                    }
+                });
+
         mModel.getGankEntities().observe(
                 this, new Observer<List<GankCategoryItemEntity>>() {
                     @Override
                     public void onChanged(List<GankCategoryItemEntity> gankEntities) {
                         if (gankEntities == null || gankEntities.size() == 0) {
-                            // TODO: 19.9.5 显示空view
+                            mView.emptyView.setVisibility(View.VISIBLE);
+                            mView.recyclerview.setVisibility(View.GONE);
                         } else {
+                            mView.emptyView.setVisibility(View.GONE);
+                            mView.recyclerview.setVisibility(View.VISIBLE);
                             mGankXianduListRecyclerAdapter.setDatas(gankEntities);
                         }
                     }
