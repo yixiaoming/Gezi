@@ -1,4 +1,4 @@
-package org.miles.gank.category;
+package org.miles.gank.xiandu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import org.miles.gank.category.categorylist.GankCategoryListFragment;
+import org.miles.gank.xiandu.xiandulist.GankXianduListFragment;
 import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 
 import java.util.ArrayList;
@@ -16,32 +16,32 @@ import java.util.List;
 public class GankTabPagerAdapter extends FragmentPagerAdapter {
 
     private List<GankSecondCategoryEntity> mGankCategories;
-    private List<GankCategoryListFragment> mGankCategoryListFragments;
+    private List<GankXianduListFragment> mGankXianduListFragments;
 
     public GankTabPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
         mGankCategories = new ArrayList<>();
-        mGankCategoryListFragments = new ArrayList<>();
+        mGankXianduListFragments = new ArrayList<>();
     }
 
     public void setDatas(List<GankSecondCategoryEntity> gankCategories) {
         mGankCategories.clear();
-        mGankCategoryListFragments.clear();
+        mGankXianduListFragments.clear();
 
         mGankCategories.addAll(gankCategories);
-        mGankCategoryListFragments.addAll(Collections.<GankCategoryListFragment>nCopies(mGankCategories.size(), null));
+        mGankXianduListFragments.addAll(Collections.<GankXianduListFragment>nCopies(mGankCategories.size(), null));
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        if (mGankCategoryListFragments.get(position) == null) {
+        if (mGankXianduListFragments.get(position) == null) {
             GankSecondCategoryEntity entity = mGankCategories.get(position);
-            GankCategoryListFragment fragment = GankCategoryListFragment.newInstance(entity.categoryId);
-            mGankCategoryListFragments.add(position, fragment);
+            GankXianduListFragment fragment = GankXianduListFragment.newInstance(entity.categoryId);
+            mGankXianduListFragments.add(position, fragment);
         }
-        return mGankCategoryListFragments.get(position);
+        return mGankXianduListFragments.get(position);
     }
 
     @Override

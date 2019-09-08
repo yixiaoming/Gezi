@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.miles.gank.category.GankCategoryFragment;
+import org.miles.gank.xiandu.GankXianduFragment;
 import org.miles.gank.today.GankTodayFragment;
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.GankFragmentBinding;
@@ -20,8 +20,6 @@ public class GankFragment
     private static final String TODAY_FRAGMENT_TAG = "today_fragment";
     private static final String CATEGORY_FRAGMENT_TAG = "category_fragment";
 
-    private GankTodayFragment mGankTodayFragment;
-    private GankCategoryFragment mGankCategoryFragment;
     private Fragment mCurrentFragment;
 
     @Override
@@ -37,7 +35,6 @@ public class GankFragment
     public static GankFragment newInstance() {
         GankFragment fragment = new GankFragment();
         Bundle params = new Bundle();
-        // TODO: 19.9.7 add params
         fragment.setArguments(params);
         return fragment;
     }
@@ -87,7 +84,7 @@ public class GankFragment
             transaction.add(R.id.gank_fragment_content, willShowFragment
                     , TODAY_FRAGMENT_TAG);
         } else if (CATEGORY_FRAGMENT_TAG.equals(fragmentTag)) {
-            willShowFragment = GankCategoryFragment.newInstance();
+            willShowFragment = GankXianduFragment.newInstance();
             transaction.add(R.id.gank_fragment_content, willShowFragment
                     , CATEGORY_FRAGMENT_TAG);
         } else {

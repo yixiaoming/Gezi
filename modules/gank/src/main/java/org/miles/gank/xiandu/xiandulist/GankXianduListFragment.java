@@ -1,4 +1,4 @@
-package org.miles.gank.category.categorylist;
+package org.miles.gank.xiandu.xiandulist;
 
 import android.os.Bundle;
 import android.view.View;
@@ -15,15 +15,15 @@ import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
 
-public class GankCategoryListFragment
-        extends BaseViewModelFragment<GankCategoryListFragmentBinding, GankCategoryListFragmentModel> {
+public class GankXianduListFragment
+        extends BaseViewModelFragment<GankCategoryListFragmentBinding, GankXianduListFragmentModel> {
 
     public static final String PARAM_CATEGORY = "param_category_type";
     private String mCategory;
-    private GankCategoryListRecyclerAdapter mGankCategoryListRecyclerAdapter;
+    private GankXianduListRecyclerAdapter mGankXianduListRecyclerAdapter;
 
-    public static GankCategoryListFragment newInstance(String category) {
-        GankCategoryListFragment fragment = new GankCategoryListFragment();
+    public static GankXianduListFragment newInstance(String category) {
+        GankXianduListFragment fragment = new GankXianduListFragment();
         Bundle params = new Bundle();
         params.putString(PARAM_CATEGORY, category);
         fragment.setArguments(params);
@@ -36,8 +36,8 @@ public class GankCategoryListFragment
     }
 
     @Override
-    protected Class<GankCategoryListFragmentModel> getViewModelClass() {
-        return GankCategoryListFragmentModel.class;
+    protected Class<GankXianduListFragmentModel> getViewModelClass() {
+        return GankXianduListFragmentModel.class;
     }
 
     @Override
@@ -58,11 +58,11 @@ public class GankCategoryListFragment
     }
 
     private void initViews() {
-        if (mGankCategoryListRecyclerAdapter == null) {
-            mGankCategoryListRecyclerAdapter = new GankCategoryListRecyclerAdapter();
+        if (mGankXianduListRecyclerAdapter == null) {
+            mGankXianduListRecyclerAdapter = new GankXianduListRecyclerAdapter();
         }
         mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        mView.recyclerview.setAdapter(mGankCategoryListRecyclerAdapter);
+        mView.recyclerview.setAdapter(mGankXianduListRecyclerAdapter);
     }
 
     private void initObservers() {
@@ -73,7 +73,7 @@ public class GankCategoryListFragment
                         if (gankEntities == null || gankEntities.size() == 0) {
                             // TODO: 19.9.5 显示空view
                         } else {
-                            mGankCategoryListRecyclerAdapter.setDatas(gankEntities);
+                            mGankXianduListRecyclerAdapter.setDatas(gankEntities);
                         }
                     }
                 }

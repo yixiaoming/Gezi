@@ -1,4 +1,4 @@
-package org.miles.gank.category;
+package org.miles.gank.xiandu;
 
 import android.annotation.SuppressLint;
 
@@ -21,12 +21,12 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
-public class GankCategoryFragmentModel extends ViewModel {
+public class GankXianduFragmentModel extends ViewModel {
 
     private GankApi mGankApi;
     private MutableLiveData<List<GankSecondCategoryEntity>> mGankCategories;
 
-    public GankCategoryFragmentModel() {
+    public GankXianduFragmentModel() {
         mGankApi = RetrofitManager.get().getGankApi();
         mGankCategories = new MutableLiveData<>();
     }

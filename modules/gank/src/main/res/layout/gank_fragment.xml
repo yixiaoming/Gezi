@@ -19,7 +19,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Today" />
+                android:text="最新" />
 
             <TextView
                 android:id="@+id/category_btn"
@@ -28,7 +28,7 @@
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="category" />
+                android:text="闲读" />
         </LinearLayout>
 
         <FrameLayout

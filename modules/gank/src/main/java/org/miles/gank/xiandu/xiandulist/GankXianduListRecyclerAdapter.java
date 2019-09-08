@@ -1,4 +1,4 @@
-package org.miles.gank.category.categorylist;
+package org.miles.gank.xiandu.xiandulist;
 
 import android.view.ViewGroup;
 
@@ -13,8 +13,8 @@ import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GankCategoryListRecyclerAdapter
-        extends RecyclerView.Adapter<GankCategoryListRecyclerAdapter.GankViewHolder> {
+public class GankXianduListRecyclerAdapter
+        extends RecyclerView.Adapter<GankXianduListRecyclerAdapter.GankViewHolder> {
 
     private List<GankCategoryItemEntity> mDatas = new ArrayList<>();
 
