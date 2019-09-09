@@ -7,11 +7,9 @@ import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
 import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 import org.miles.lib.data.gank.entity.GankTodayItemEntity;
 
-import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -24,10 +22,6 @@ public interface GankApi {
 
     @GET("xiandu/category/{categoryId}")
     Observable<GankBaseEntity<List<GankSecondCategoryEntity>>> getSecondCategories(
-            @Path("categoryId") String categoryId);
-
-    @GET("xiandu/category/{categoryId}")
-    Call<GankBaseEntity<List<GankSecondCategoryEntity>>> getSecondCategoriesSync(
             @Path("categoryId") String categoryId);
 
     @GET("xiandu/data/id/{id}/count/{count}/page/{page}")

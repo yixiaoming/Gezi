@@ -7,10 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
-import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankCategoryFragmentBinding;
+import org.miles.gank.R;
+import org.miles.gank.databinding.GankCategoryFragmentBinding;
 import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
-import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;

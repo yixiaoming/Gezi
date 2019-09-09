@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankTodayItemLayoutBinding;
+import org.miles.gank.R;
+import org.miles.gank.databinding.GankTodayItemLayoutBinding;
 import org.miles.lib.data.gank.entity.GankTodayItemEntity;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 

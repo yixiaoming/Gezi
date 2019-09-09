@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModel;
 
+import org.miles.gank.GankFragment;
 import org.miles.gezi.R;
 import org.miles.kaiyan.main.KaiyanFragment;
 
@@ -14,14 +15,23 @@ public class MainViewModel extends ViewModel {
     public static final String TAG = "MainViewModel";
 
     private static final String FRAGMENT_TAG_KAIYAN = "fragment_tag_kaiyan";
+    private static final String FRAGMENT_TAG_GANK = "fragment_tag_gank";
 
     private Fragment mDisplayFragment;
     private KaiyanFragment mKaiyanFragment;
+    private GankFragment mGankFragment;
 
     public boolean showFragment(@IdRes int navigationId, @IdRes int containerId, FragmentManager fragmentManager) {
         Fragment tempFragment = null;
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (navigationId) {
+            case R.id.action_gank:
+                if (mGankFragment == null) {
+                    mGankFragment = GankFragment.newInstance();
+                    transaction.add(containerId, mGankFragment, FRAGMENT_TAG_GANK);
+                }
+                tempFragment = mGankFragment;
+                break;
             case R.id.action_video:
                 if (mKaiyanFragment == null) {
                     mKaiyanFragment = KaiyanFragment.newInstance();

@@ -49,5 +49,6 @@ dependencies {
     implementation project(path: ':lib_data')
     if (!isModule.toBoolean()) {
         implementation project(path: ':modules:kaiyan')
+        implementation project(path: ':modules:gank')
     }
 }

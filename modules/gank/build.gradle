@@ -36,6 +36,7 @@ android {
             if (isModule.toBoolean()) {
                 manifest.srcFile 'src/module/AndroidManifest.xml'
                 java.srcDirs("src/main/java", "src/module/java")
+                res.srcDirs("src/main/res", "src/module/res")
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
             }

@@ -19,6 +19,7 @@ public class MainActivity extends BaseViewModelActivity<ActivityMainBinding, Mai
         super.onCreate(savedInstanceState);
         initViews();
         initObservers();
+        mModel.showFragment(R.id.action_gank, R.id.main_content, getSupportFragmentManager());
     }
 
     @Override

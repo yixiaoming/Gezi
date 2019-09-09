@@ -8,8 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankTodayListFragmentBinding;
+import org.miles.gank.R;
+import org.miles.gank.databinding.GankTodayListFragmentBinding;
 import org.miles.lib.data.gank.entity.GankTodayItemEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 

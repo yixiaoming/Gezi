@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
-import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankTodayFragmentBinding;
+import org.miles.gank.R;
+import org.miles.gank.databinding.GankTodayFragmentBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;

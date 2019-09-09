@@ -6,8 +6,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import org.miles.kaiyan.R;
-
 public class ModuleActivity extends AppCompatActivity {
 
     private GankFragment mGankFragment;

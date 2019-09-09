@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankCategoryListFragmentBinding;
+import org.miles.gank.R;
+import org.miles.gank.databinding.GankCategoryListFragmentBinding;
 import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
 import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
@@ -103,10 +103,10 @@ public class GankXianduListFragment
                     @Override
                     public void onChanged(List<GankCategoryItemEntity> gankEntities) {
                         if (gankEntities == null || gankEntities.size() == 0) {
-                            mView.emptyView.setVisibility(View.VISIBLE);
+                            mView.emptyView.getRoot().setVisibility(View.VISIBLE);
                             mView.recyclerview.setVisibility(View.GONE);
                         } else {
-                            mView.emptyView.setVisibility(View.GONE);
+                            mView.emptyView.getRoot().setVisibility(View.GONE);
                             mView.recyclerview.setVisibility(View.VISIBLE);
                             mGankXianduListRecyclerAdapter.setDatas(gankEntities);
                         }

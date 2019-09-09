@@ -8,10 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import org.miles.gank.databinding.GankFragmentBinding;
 import org.miles.gank.xiandu.GankXianduFragment;
 import org.miles.gank.today.GankTodayFragment;
-import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankFragmentBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 public class GankFragment

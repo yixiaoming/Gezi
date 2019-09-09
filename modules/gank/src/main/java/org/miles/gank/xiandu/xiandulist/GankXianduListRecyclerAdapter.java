@@ -5,8 +5,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.miles.kaiyan.R;
-import org.miles.kaiyan.databinding.GankCategoryItemLayoutBinding;
+import org.miles.gank.R;
+import org.miles.gank.databinding.GankCategoryItemLayoutBinding;
 import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
