@@ -29,8 +29,9 @@ public class KaiyanListFragment
 
     public static KaiyanListFragment newInstance(KaiyanCategory category) {
         KaiyanListFragment fragment = new KaiyanListFragment();
-        fragment.setArguments(new Bundle());
-        fragment.getArguments().putLong(PARAM_CATEGORY_ID, category.id);
+        Bundle bundle = new Bundle();
+        bundle.putLong(PARAM_CATEGORY_ID, category.id);
+        fragment.setArguments(bundle);
         return fragment;
     }
 

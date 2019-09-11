@@ -20,8 +20,7 @@ public class KaiyanListRecyclerAdapter
     private List<KaiyanVideoItem> mDatas = new ArrayList<>();
 
     public void setDatas(List<KaiyanVideoItem> kaiyanVideoItems) {
-        mDatas.clear();
-        mDatas.addAll(kaiyanVideoItems);
+        mDatas = kaiyanVideoItems;
         notifyDataSetChanged();
     }
 

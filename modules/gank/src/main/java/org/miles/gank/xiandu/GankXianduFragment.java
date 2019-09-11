@@ -46,8 +46,8 @@ public class GankXianduFragment
     }
 
     private void initViews() {
-        mView.tablayout.setupWithViewPager(mView.viewapger);
-        mView.viewapger.setAdapter(mGankTabPagerAdapter);
+        mView.tablayout.setupWithViewPager(mView.xianduViewpager);
+        mView.xianduViewpager.setAdapter(mGankTabPagerAdapter);
     }
 
     private void initObservers() {
@@ -58,12 +58,5 @@ public class GankXianduFragment
                         mGankTabPagerAdapter.setDatas(gankFirstCategoryEntities);
                     }
                 });
-//        mModel.getGankCategoryes().observe(this,
-//                new Observer<List<GankSecondCategoryEntity>>() {
-//                    @Override
-//                    public void onChanged(List<GankSecondCategoryEntity> gankSecondCategoryEntities) {
-//                        mGankTabPagerAdapter.setDatas(gankSecondCategoryEntities);
-//                    }
-//                });
     }
 }

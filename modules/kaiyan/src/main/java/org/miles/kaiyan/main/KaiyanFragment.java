@@ -19,7 +19,7 @@ public class KaiyanFragment
 
     private static final String TAG = "KaiyanFragment";
 
-    private KaiyanViewpagerAdapter mViewPagerAdapter;
+    private KaiyanPagerAdapter mViewPagerAdapter;
 
     public static KaiyanFragment newInstance() {
         KaiyanFragment fragment = new KaiyanFragment();
@@ -40,20 +40,20 @@ public class KaiyanFragment
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (mViewPagerAdapter == null) {
-            mViewPagerAdapter = new KaiyanViewpagerAdapter(getFragmentManager());
+            mViewPagerAdapter = new KaiyanPagerAdapter(getFragmentManager());
         }
-        mView.tablayout.setupWithViewPager(mView.viewpager);
-        mView.viewpager.setAdapter(mViewPagerAdapter);
+        mView.tablayout.setupWithViewPager(mView.kaiyanViewpager);
+        mView.kaiyanViewpager.setAdapter(mViewPagerAdapter);
         mModel.getKaiyanCategories().observe(this, new Observer<List<KaiyanCategory>>() {
             @Override
             public void onChanged(List<KaiyanCategory> kaiyanCategories) {
                 if (kaiyanCategories == null || kaiyanCategories.size() == 0) {
                     mView.emptyView.setVisibility(View.VISIBLE);
-                    mView.viewpager.setVisibility(View.GONE);
+                    mView.kaiyanViewpager.setVisibility(View.GONE);
                     return;
                 }
                 mView.emptyView.setVisibility(View.GONE);
-                mView.viewpager.setVisibility(View.VISIBLE);
+                mView.kaiyanViewpager.setVisibility(View.VISIBLE);
                 mViewPagerAdapter.setDatas(kaiyanCategories);
             }
         });

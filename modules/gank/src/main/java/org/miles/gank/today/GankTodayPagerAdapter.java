@@ -23,11 +23,13 @@ public class GankTodayPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = null;
         if (position >= mFragments.size() || mFragments.get(position) == null) {
-            fragment = GankTodayListFragment.newInstance(mDatas.get(position));
+            Fragment fragment = GankTodayListFragment.newInstance(mDatas.get(position));
+            mFragments.add(fragment);
+            return fragment;
         }
-        return fragment;
+
+        return mFragments.get(position);
     }
 
     @Override
@@ -41,11 +43,10 @@ public class GankTodayPagerAdapter extends FragmentPagerAdapter {
         return mDatas.get(position);
     }
 
-    public void setDatas(List<String> categories) {
-        mDatas.clear();
+    public void setDatas(@NonNull List<String> categories) {
+        mDatas = categories;
         mFragments.clear();
 
-        mDatas.addAll(categories);
         notifyDataSetChanged();
     }
 }

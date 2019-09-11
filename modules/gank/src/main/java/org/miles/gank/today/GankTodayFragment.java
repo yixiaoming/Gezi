@@ -48,8 +48,8 @@ public class GankTodayFragment
         if (mGankTodayPagerAdapter == null) {
             mGankTodayPagerAdapter = new GankTodayPagerAdapter(getFragmentManager());
         }
-        mView.viewpager.setAdapter(mGankTodayPagerAdapter);
-        mView.tablayout.setupWithViewPager(mView.viewpager);
+        mView.todayViewpager.setAdapter(mGankTodayPagerAdapter);
+        mView.tablayout.setupWithViewPager(mView.todayViewpager);
     }
 
     private void initObservers() {
