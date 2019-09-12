@@ -1,4 +1,4 @@
-package org.miles.lib.data.kaiyan.entity;
+package org.miles.kaiyan.data.entity;
 
 import java.util.List;
 

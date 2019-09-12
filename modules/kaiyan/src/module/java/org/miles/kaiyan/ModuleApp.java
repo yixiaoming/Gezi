@@ -3,7 +3,8 @@ package org.miles.kaiyan;
 import android.app.Application;
 import android.content.Context;
 
-import org.miles.lib.data.DataManager;
+import org.miles.kaiyan.data.KaiyanDataSource;
+import org.miles.kaiyan.data.api.KaiyanApi;
 
 public class ModuleApp extends Application {
 
@@ -18,7 +19,12 @@ public class ModuleApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DataManager.init(sAppContext);
+        KaiyanDataSource.initApi(new KaiyanDataSource.Api() {
+            @Override
+            public KaiyanApi kaiyanApi() {
+                return RetrofitManager.get().getKaiyanApi();
+            }
+        });
     }
 
     public static Context get() {

@@ -1,7 +1,6 @@
-package org.miles.lib.data;
+package org.miles.gank;
 
 import org.miles.gank.data.api.GankApi;
-import org.miles.kaiyan.data.api.KaiyanApi;
 import org.miles.lib.log.Logger;
 
 import java.io.IOException;
@@ -26,7 +25,6 @@ public class RetrofitManager {
     private static volatile RetrofitManager sInstance;
     private OkHttpClient mOkHttpClient;
 
-    private KaiyanApi mKaiyanApi;
     private GankApi mGankApi;
 
     private RetrofitManager() {
@@ -61,19 +59,6 @@ public class RetrofitManager {
             }
         }
         return sInstance;
-    }
-
-    public KaiyanApi getKaiyanApi() {
-        if (mKaiyanApi == null) {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(KaiyanApi.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .client(mOkHttpClient)
-                    .build();
-            mKaiyanApi = retrofit.create(KaiyanApi.class);
-        }
-        return mKaiyanApi;
     }
 
     public GankApi getGankApi() {

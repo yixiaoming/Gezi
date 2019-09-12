@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer;
 
 import org.miles.gank.R;
 import org.miles.gank.databinding.GankCategoryFragmentBinding;
-import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
+import org.miles.gank.data.entity.GankFirstCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;

@@ -1,11 +1,11 @@
-package org.miles.lib.data.gank.api;
+package org.miles.gank.data.api;
 
 
-import org.miles.lib.data.gank.entity.GankBaseEntity;
-import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
-import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
-import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
-import org.miles.lib.data.gank.entity.GankTodayItemEntity;
+import org.miles.gank.data.entity.GankBaseEntity;
+import org.miles.gank.data.entity.GankCategoryItemEntity;
+import org.miles.gank.data.entity.GankFirstCategoryEntity;
+import org.miles.gank.data.entity.GankSecondCategoryEntity;
+import org.miles.gank.data.entity.GankTodayItemEntity;
 
 import java.util.List;
 

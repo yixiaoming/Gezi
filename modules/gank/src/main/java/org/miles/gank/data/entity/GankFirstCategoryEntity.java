@@ -1,4 +1,4 @@
-package org.miles.lib.data.gank.entity;
+package org.miles.gank.data.entity;
 
 import android.provider.BaseColumns;
 

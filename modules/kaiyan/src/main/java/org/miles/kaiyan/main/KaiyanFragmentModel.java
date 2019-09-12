@@ -1,16 +1,14 @@
 package org.miles.kaiyan.main;
 
 import android.annotation.SuppressLint;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.miles.lib.data.kaiyan.KaiyanDataSource;
-import org.miles.lib.data.kaiyan.api.KaiyanApi;
-import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
-import org.miles.lib.log.Logger;
+import org.miles.kaiyan.data.KaiyanDataSource;
+import org.miles.kaiyan.data.api.KaiyanApi;
+import org.miles.kaiyan.data.entity.KaiyanCategory;
 
 import java.util.List;
 

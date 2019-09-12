@@ -1,8 +1,9 @@
 package org.miles.lib.data.kaiyan;
 
+import org.miles.kaiyan.data.KaiyanDataSource;
+import org.miles.kaiyan.data.db.KaiyanCategoryDao;
+import org.miles.kaiyan.data.db.KaiyanVideoItemDao;
 import org.miles.lib.data.AppDatabase;
-import org.miles.lib.data.kaiyan.db.KaiyanCategoryDao;
-import org.miles.lib.data.kaiyan.db.KaiyanVideoItemDao;
 
 public class KaiyanDaoImpl implements KaiyanDataSource.Dao {
     @Override

@@ -1,4 +1,4 @@
-package org.miles.lib.data.kaiyan.entity;
+package org.miles.kaiyan.data.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

@@ -1,7 +1,8 @@
 package org.miles.lib.data.gank;
 
+import org.miles.gank.data.GankDataSource;
 import org.miles.lib.data.AppDatabase;
-import org.miles.lib.data.gank.db.GankDao;
+import org.miles.gank.data.db.GankDao;
 
 public class GankDaoImpl implements GankDataSource.Dao {
     @Override

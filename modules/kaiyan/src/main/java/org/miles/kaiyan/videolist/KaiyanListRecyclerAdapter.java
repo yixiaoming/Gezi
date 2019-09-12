@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.KaiyanVideoItemLayoutBinding;
-import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
+import org.miles.kaiyan.data.entity.KaiyanVideoItem;
 import org.miles.lib.glide.GlideApp;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 

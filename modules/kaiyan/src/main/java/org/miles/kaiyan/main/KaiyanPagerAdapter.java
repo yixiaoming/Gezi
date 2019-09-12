@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import org.miles.kaiyan.videolist.KaiyanListFragment;
-import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
+import org.miles.kaiyan.data.entity.KaiyanCategory;
 
 import java.util.ArrayList;
 import java.util.List;

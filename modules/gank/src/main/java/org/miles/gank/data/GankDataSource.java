@@ -1,7 +1,7 @@
-package org.miles.lib.data.gank;
+package org.miles.gank.data;
 
-import org.miles.lib.data.gank.api.GankApi;
-import org.miles.lib.data.gank.db.GankDao;
+import org.miles.gank.data.api.GankApi;
+import org.miles.gank.data.db.GankDao;
 
 public class GankDataSource {
 

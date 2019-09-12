@@ -1,8 +1,8 @@
-package org.miles.lib.data.kaiyan.db;
+package org.miles.kaiyan.data.db;
 
 import androidx.room.Dao;
 
-import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
+import org.miles.kaiyan.data.entity.KaiyanVideoItem;
 import org.miles.lib.room.BaseDao;
 
 @Dao

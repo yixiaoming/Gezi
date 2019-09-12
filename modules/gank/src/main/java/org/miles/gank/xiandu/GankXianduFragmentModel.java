@@ -6,20 +6,16 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.miles.lib.data.RetrofitManager;
-import org.miles.lib.data.gank.api.GankApi;
-import org.miles.lib.data.gank.entity.GankBaseEntity;
-import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
-import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
-import org.miles.lib.log.Logger;
+import org.miles.gank.data.GankDataSource;
+import org.miles.gank.data.api.GankApi;
+import org.miles.gank.data.entity.GankBaseEntity;
+import org.miles.gank.data.entity.GankFirstCategoryEntity;
+import org.miles.gank.data.entity.GankSecondCategoryEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class GankXianduFragmentModel extends ViewModel {
 
@@ -28,7 +24,7 @@ public class GankXianduFragmentModel extends ViewModel {
     private MutableLiveData<List<GankFirstCategoryEntity>> mGankFirstCategories;
 
     public GankXianduFragmentModel() {
-        mGankApi = RetrofitManager.get().getGankApi();
+        mGankApi = GankDataSource.api().gankApi();
         mGankCategories = new MutableLiveData<>();
         mGankFirstCategories = new MutableLiveData<>();
     }

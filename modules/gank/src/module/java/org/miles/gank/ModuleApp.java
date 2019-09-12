@@ -3,7 +3,8 @@ package org.miles.gank;
 import android.app.Application;
 import android.content.Context;
 
-import org.miles.lib.data.DataManager;
+import org.miles.gank.data.GankDataSource;
+import org.miles.gank.data.api.GankApi;
 
 public class ModuleApp extends Application {
 
@@ -18,7 +19,12 @@ public class ModuleApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DataManager.init(sAppContext);
+        GankDataSource.initApi(new GankDataSource.Api() {
+            @Override
+            public GankApi gankApi() {
+                return RetrofitManager.get().getGankApi();
+            }
+        });
     }
 
     public static Context get() {

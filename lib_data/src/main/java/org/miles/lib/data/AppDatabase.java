@@ -8,13 +8,13 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import org.miles.lib.data.gank.db.GankDao;
-import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
-import org.miles.lib.data.gank.entity.GankTodayItemEntity;
-import org.miles.lib.data.kaiyan.db.KaiyanCategoryDao;
-import org.miles.lib.data.kaiyan.db.KaiyanVideoItemDao;
-import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
-import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
+import org.miles.gank.data.db.GankDao;
+import org.miles.gank.data.entity.GankFirstCategoryEntity;
+import org.miles.gank.data.entity.GankTodayItemEntity;
+import org.miles.kaiyan.data.db.KaiyanCategoryDao;
+import org.miles.kaiyan.data.db.KaiyanVideoItemDao;
+import org.miles.kaiyan.data.entity.KaiyanCategory;
+import org.miles.kaiyan.data.entity.KaiyanVideoItem;
 
 @Database(entities = {KaiyanCategory.class, KaiyanVideoItem.class, GankTodayItemEntity.class,
         GankFirstCategoryEntity.class}, version = 1)

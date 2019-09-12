@@ -3,11 +3,11 @@ package org.miles.gank.xiandu.xiandulist;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.miles.lib.data.RetrofitManager;
-import org.miles.lib.data.gank.api.GankApi;
-import org.miles.lib.data.gank.entity.GankBaseEntity;
-import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
-import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
+import org.miles.gank.data.GankDataSource;
+import org.miles.gank.data.api.GankApi;
+import org.miles.gank.data.entity.GankBaseEntity;
+import org.miles.gank.data.entity.GankCategoryItemEntity;
+import org.miles.gank.data.entity.GankSecondCategoryEntity;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class GankXianduListFragmentModel extends ViewModel {
     private MutableLiveData<List<GankSecondCategoryEntity>> mSecondCategories;
 
     public GankXianduListFragmentModel() {
-        mGankApi = RetrofitManager.get().getGankApi();
+        mGankApi = GankDataSource.api().gankApi();
         if (mGankEntities == null) {
             mGankEntities = new MutableLiveData<>();
         }

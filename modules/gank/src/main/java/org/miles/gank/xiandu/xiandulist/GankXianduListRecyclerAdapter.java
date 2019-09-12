@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.miles.gank.R;
 import org.miles.gank.databinding.GankCategoryItemLayoutBinding;
-import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
+import org.miles.gank.data.entity.GankCategoryItemEntity;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
 import java.util.ArrayList;

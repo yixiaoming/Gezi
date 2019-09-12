@@ -1,8 +1,8 @@
-package org.miles.lib.data.gank.db;
+package org.miles.gank.data.db;
 
 import androidx.room.Dao;
 
-import org.miles.lib.data.gank.entity.GankTodayItemEntity;
+import org.miles.gank.data.entity.GankTodayItemEntity;
 import org.miles.lib.room.BaseDao;
 
 @Dao

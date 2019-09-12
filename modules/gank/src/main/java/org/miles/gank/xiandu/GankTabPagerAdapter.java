@@ -7,8 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import org.miles.gank.xiandu.xiandulist.GankXianduListFragment;
-import org.miles.lib.data.gank.entity.GankFirstCategoryEntity;
-import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
+import org.miles.gank.data.entity.GankFirstCategoryEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;

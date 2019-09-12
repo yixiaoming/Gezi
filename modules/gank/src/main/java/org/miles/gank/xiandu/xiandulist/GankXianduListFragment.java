@@ -1,10 +1,8 @@
 package org.miles.gank.xiandu.xiandulist;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.miles.gank.R;
 import org.miles.gank.databinding.GankCategoryListFragmentBinding;
-import org.miles.lib.data.gank.entity.GankCategoryItemEntity;
-import org.miles.lib.data.gank.entity.GankSecondCategoryEntity;
+import org.miles.gank.data.entity.GankCategoryItemEntity;
+import org.miles.gank.data.entity.GankSecondCategoryEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.miles.lib.data.gank.entity;
+package org.miles.gank.data.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

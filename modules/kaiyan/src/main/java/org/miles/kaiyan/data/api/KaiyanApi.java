@@ -1,7 +1,7 @@
-package org.miles.lib.data.kaiyan.api;
+package org.miles.kaiyan.data.api;
 
-import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
-import org.miles.lib.data.kaiyan.entity.KaiyanVideoList;
+import org.miles.kaiyan.data.entity.KaiyanCategory;
+import org.miles.kaiyan.data.entity.KaiyanVideoList;
 
 import java.util.List;
 

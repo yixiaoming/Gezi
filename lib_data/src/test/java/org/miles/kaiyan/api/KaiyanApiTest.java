@@ -5,9 +5,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.miles.lib.data.RetrofitManager;
-import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
-import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
-import org.miles.lib.data.kaiyan.entity.KaiyanVideoList;
+import org.miles.kaiyan.data.entity.KaiyanCategory;
+import org.miles.kaiyan.data.entity.KaiyanVideoItem;
+import org.miles.kaiyan.data.entity.KaiyanVideoList;
 
 import java.util.List;
 

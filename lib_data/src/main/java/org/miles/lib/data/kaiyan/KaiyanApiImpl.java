@@ -1,7 +1,8 @@
 package org.miles.lib.data.kaiyan;
 
+import org.miles.kaiyan.data.KaiyanDataSource;
 import org.miles.lib.data.RetrofitManager;
-import org.miles.lib.data.kaiyan.api.KaiyanApi;
+import org.miles.kaiyan.data.api.KaiyanApi;
 
 public class KaiyanApiImpl implements KaiyanDataSource.Api {
     @Override

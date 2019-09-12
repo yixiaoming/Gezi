@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.KaiyanFragmentBinding;
-import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
+import org.miles.kaiyan.data.entity.KaiyanCategory;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;

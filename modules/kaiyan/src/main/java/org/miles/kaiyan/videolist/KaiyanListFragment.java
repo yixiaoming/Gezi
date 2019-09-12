@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.KaiyanCategoryFragmentBinding;
-import org.miles.lib.data.kaiyan.entity.KaiyanCategory;
-import org.miles.lib.data.kaiyan.entity.KaiyanVideoItem;
+import org.miles.kaiyan.data.entity.KaiyanCategory;
+import org.miles.kaiyan.data.entity.KaiyanVideoItem;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;

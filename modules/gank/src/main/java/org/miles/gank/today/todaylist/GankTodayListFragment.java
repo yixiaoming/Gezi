@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.miles.gank.R;
 import org.miles.gank.databinding.GankTodayListFragmentBinding;
-import org.miles.lib.data.gank.entity.GankTodayItemEntity;
+import org.miles.gank.data.entity.GankTodayItemEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;

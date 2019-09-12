@@ -3,10 +3,10 @@ package org.miles.gank.today.todaylist;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.miles.lib.data.RetrofitManager;
-import org.miles.lib.data.gank.api.GankApi;
-import org.miles.lib.data.gank.entity.GankBaseEntity;
-import org.miles.lib.data.gank.entity.GankTodayItemEntity;
+import org.miles.gank.data.GankDataSource;
+import org.miles.gank.data.api.GankApi;
+import org.miles.gank.data.entity.GankBaseEntity;
+import org.miles.gank.data.entity.GankTodayItemEntity;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class GankTodayListFragmentModel extends ViewModel {
 
     public GankTodayListFragmentModel() {
         mGankTodayItemEntities = new MutableLiveData<>();
-        mGankApi = RetrofitManager.get().getGankApi();
+        mGankApi = GankDataSource.api().gankApi();
     }
 
     public MutableLiveData<List<GankTodayItemEntity>> getGankTodayItemEntities() {

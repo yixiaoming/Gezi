@@ -47,7 +47,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(":lib_data")
+    implementation project(":common:lib_room")
     implementation project(":common:lib_mvvm")
     implementation project(":common:lib_log")
     implementation project(":common:lib_glide")
