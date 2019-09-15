@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModel;
 import org.miles.gank.GankFragment;
 import org.miles.gezi.R;
 import org.miles.kaiyan.main.KaiyanFragment;
+import org.miles.music.MusicFragment;
+import org.miles.personal.PersonalFragment;
 
 public class MainViewModel extends ViewModel {
 
@@ -16,10 +18,14 @@ public class MainViewModel extends ViewModel {
 
     private static final String FRAGMENT_TAG_KAIYAN = "fragment_tag_kaiyan";
     private static final String FRAGMENT_TAG_GANK = "fragment_tag_gank";
+    private static final String FRAGMENT_TAG_MUSIC = "fragment_tag_music";
+    private static final String FRAGMENT_TAG_PERSONAL = "fragment_tag_personal";
 
     private Fragment mDisplayFragment;
     private KaiyanFragment mKaiyanFragment;
     private GankFragment mGankFragment;
+    private MusicFragment mMusicFragment;
+    private PersonalFragment mPersonalFragment;
 
     public boolean showFragment(@IdRes int navigationId, @IdRes int containerId, FragmentManager fragmentManager) {
         Fragment tempFragment = null;
@@ -38,6 +44,20 @@ public class MainViewModel extends ViewModel {
                     transaction.add(containerId, mKaiyanFragment, FRAGMENT_TAG_KAIYAN);
                 }
                 tempFragment = mKaiyanFragment;
+                break;
+            case R.id.action_music:
+                if (mMusicFragment == null) {
+                    mMusicFragment = MusicFragment.newInstance();
+                    transaction.add(containerId, mMusicFragment, FRAGMENT_TAG_MUSIC);
+                }
+                tempFragment = mMusicFragment;
+                break;
+            case R.id.action_personal:
+                if (mPersonalFragment == null) {
+                    mPersonalFragment = PersonalFragment.newInstance();
+                    transaction.add(containerId, mPersonalFragment, FRAGMENT_TAG_PERSONAL);
+                }
+                tempFragment = mPersonalFragment;
                 break;
             default:
                 break;

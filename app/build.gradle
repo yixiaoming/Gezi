@@ -42,13 +42,15 @@ dependencies {
     androidTestImplementation test.testRunner
     androidTestImplementation test.espresso
 
-    implementation project(path: ':common:lib_mvvm')
-    implementation project(path: ':common:lib_room')
-    implementation project(path: ':common:lib_widget')
+    implementation project(":common:lib_mvvm")
+    implementation project(":common:lib_room")
+    implementation project(":common:lib_widget")
 
     implementation project(path: ':lib_data')
     if (!isModule.toBoolean()) {
-        implementation project(path: ':modules:kaiyan')
-        implementation project(path: ':modules:gank')
+        implementation project(":modules:kaiyan")
+        implementation project(":modules:gank")
+        implementation project(":modules:personal")
+        implementation project(":modules:music")
     }
 }
