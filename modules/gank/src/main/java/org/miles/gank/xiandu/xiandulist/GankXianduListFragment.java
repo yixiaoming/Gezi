@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.miles.gank.R;
 import org.miles.gank.databinding.GankCategoryListFragmentBinding;
@@ -66,6 +67,13 @@ public class GankXianduListFragment
         }
         mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         mView.recyclerview.setAdapter(mGankXianduListRecyclerAdapter);
+
+        mView.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mModel.refresh();
+            }
+        });
     }
 
     private void initObservers() {
@@ -84,12 +92,14 @@ public class GankXianduListFragment
                                 textView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        mModel.loadCategoryList(entity.categoryId, 1);
+                                        mModel.loadCategoryList(entity.categoryId);
+                                        mModel.setCurDisplayCategory(entity.categoryId);
                                     }
                                 });
                                 mView.scrollTabs.addView(textView, params);
                             }
-                            mModel.loadCategoryList(gankSecondCategoryEntities.get(0).categoryId, 1);
+                            mModel.loadCategoryList(gankSecondCategoryEntities.get(0).categoryId);
+                            mModel.setCurDisplayCategory(gankSecondCategoryEntities.get(0).categoryId);
                         } else {
                             mView.scrollTabs.setVisibility(View.GONE);
                         }
@@ -108,6 +118,7 @@ public class GankXianduListFragment
                             mView.recyclerview.setVisibility(View.VISIBLE);
                             mGankXianduListRecyclerAdapter.setDatas(gankEntities);
                         }
+                        mView.swipeRefreshLayout.setRefreshing(false);
                     }
                 }
         );

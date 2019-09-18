@@ -43,4 +43,21 @@ public class GankTodayListFragmentModel extends ViewModel {
                     }
                 });
     }
+
+    public void refresh(String gankCategory) {
+        mGankApi.getTodayRandomItems(gankCategory, DEFAULT_COUNT)
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<GankBaseEntity<List<GankTodayItemEntity>>>() {
+                    @Override
+                    public void accept(GankBaseEntity<List<GankTodayItemEntity>> listGankBaseEntity) throws Exception {
+                        mGankTodayItemEntities.getValue().addAll(0, listGankBaseEntity.results);
+                        mGankTodayItemEntities.postValue(mGankTodayItemEntities.getValue());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mGankTodayItemEntities.postValue(null);
+                    }
+                });
+    }
 }

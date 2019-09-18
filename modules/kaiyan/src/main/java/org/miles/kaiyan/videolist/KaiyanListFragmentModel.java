@@ -17,9 +17,11 @@ import io.reactivex.schedulers.Schedulers;
 
 public class KaiyanListFragmentModel extends ViewModel {
 
+    private static final int DEFAULT_PAGE_SIZE = 10;
     private MutableLiveData<List<KaiyanVideoItem>> mKaiyanVideoDatas;
     private KaiyanApi mKaiyanApi;
     private long mCategoryId;
+    private int mPageStart = 1;
 
     public KaiyanListFragmentModel() {
         mKaiyanApi = KaiyanDataSource.api().kaiyanApi();
@@ -61,5 +63,30 @@ public class KaiyanListFragmentModel extends ViewModel {
         return item != null && item.data != null && item.data.author != null
                 && item.data.author.name != null && item.data.author.icon != null
                 && item.data.cover != null;
+    }
+
+    @SuppressLint("CheckResult")
+    public void doRefresh() {
+        mKaiyanApi.getVideoList(mCategoryId, mPageStart * DEFAULT_PAGE_SIZE, DEFAULT_PAGE_SIZE)
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Consumer<KaiyanVideoList>() {
+                    @Override
+                    public void accept(KaiyanVideoList kaiyanVideoList) {
+                        for (int i = kaiyanVideoList.itemList.size() - 1; i >= 0; i--) {
+                            KaiyanVideoItem item = kaiyanVideoList.itemList.get(i);
+                            if (!isValid(item)) {
+                                kaiyanVideoList.itemList.remove(item);
+                            }
+                        }
+                        mPageStart++;
+                        mKaiyanVideoDatas.getValue().addAll(0, kaiyanVideoList.itemList);
+                        mKaiyanVideoDatas.postValue(mKaiyanVideoDatas.getValue());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mKaiyanVideoDatas.postValue(null);
+                    }
+                });
     }
 }

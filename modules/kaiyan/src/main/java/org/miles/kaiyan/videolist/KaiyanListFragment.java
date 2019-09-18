@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.miles.kaiyan.R;
 import org.miles.kaiyan.databinding.KaiyanCategoryFragmentBinding;
@@ -71,7 +72,15 @@ public class KaiyanListFragment
                 }
                 mView.emptyView.setVisibility(View.GONE);
                 mView.recyclerview.setVisibility(View.VISIBLE);
+                mView.swipeRefreshLayout.setRefreshing(false);
                 mKaiyanVideoListAdapter.setDatas(kaiyanVideoItems);
+            }
+        });
+
+        mView.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mModel.doRefresh();
             }
         });
 

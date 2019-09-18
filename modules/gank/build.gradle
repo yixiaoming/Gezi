@@ -54,6 +54,7 @@ dependencies {
     implementation project(":common:lib_player")
 
     implementation common.design
+    implementation common.swiperefreshlayout
     implementation common.constraintlayout
 
     implementation common.lifecycle

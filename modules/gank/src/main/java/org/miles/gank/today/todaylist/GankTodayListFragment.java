@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.miles.gank.R;
 import org.miles.gank.databinding.GankTodayListFragmentBinding;
@@ -61,6 +62,13 @@ public class GankTodayListFragment
         }
         mView.recyclerview.setAdapter(mGankTodayListAdapter);
         mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mView.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mModel.refresh(mGankCategory);
+            }
+        });
     }
 
     private void initObservers() {
@@ -71,7 +79,7 @@ public class GankTodayListFragment
                         if (gankTodayItemEntities != null && gankTodayItemEntities.size() > 0) {
                             mGankTodayListAdapter.setDatas(gankTodayItemEntities);
                         }
-
+                        mView.swipeRefreshLayout.setRefreshing(false);
                     }
                 });
     }
