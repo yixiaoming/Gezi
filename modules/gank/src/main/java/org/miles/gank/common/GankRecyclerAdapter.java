@@ -54,10 +54,10 @@ public class GankRecyclerAdapter extends RecyclerView.Adapter<BaseRecyclerViewHo
     @Override
     public int getItemViewType(int position) {
         GankTodayItemEntity entity = mDatas.get(position);
-        if (TextUtils.equals(entity.type, "福利")) {
+        if (TextUtils.equals(entity.type, Constrants.CATEGORY_FULI)) {
             return ITEMVIEW_TYPE_BIG_IMG;
         }
-        if (TextUtils.equals(entity.type, "休息视频")) {
+        if (TextUtils.equals(entity.type, Constrants.CATEGORY_VIDEO)) {
             return ITEMVIEW_TYPE_VIDEO;
         }
 

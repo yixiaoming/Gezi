@@ -31,7 +31,6 @@ public class GankTodayFragment
     public static GankTodayFragment newInstance() {
         GankTodayFragment fragment = new GankTodayFragment();
         Bundle params = new Bundle();
-        // TODO: 19.9.7 add params
         fragment.setArguments(params);
         return fragment;
     }

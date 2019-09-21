@@ -9,11 +9,11 @@ import org.miles.gank.data.api.GankApi;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.miles.gank.common.Constrants.DEFAULT_CATEGORIES;
+
 public class GankTodayFragmentModel extends ViewModel {
 
-    private static String[] DEFAULT_CATEGORIES = {
-            "all", "福利", "Android", "iOS", "休息视频", "瞎推荐", "拓展资源", "前端",
-    };
+
     private GankApi mGankApi;
     private MutableLiveData<List<String>> mCategories;
 
