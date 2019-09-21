@@ -8,20 +8,20 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 
 import org.miles.gank.R;
-import org.miles.gank.databinding.GankCategoryFragmentBinding;
 import org.miles.gank.data.entity.GankFirstCategoryEntity;
+import org.miles.gank.databinding.GankXianduFragmentBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
 
 public class GankXianduFragment
-        extends BaseViewModelFragment<GankCategoryFragmentBinding, GankXianduFragmentModel> {
+        extends BaseViewModelFragment<GankXianduFragmentBinding, GankXianduFragmentModel> {
 
     private GankTabPagerAdapter mGankTabPagerAdapter;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.gank_category_fragment;
+        return R.layout.gank_xiandu_fragment;
     }
 
     @Override

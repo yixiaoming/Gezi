@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.miles.gank.R;
-import org.miles.gank.databinding.GankCategoryListFragmentBinding;
 import org.miles.gank.data.entity.GankCategoryItemEntity;
 import org.miles.gank.data.entity.GankSecondCategoryEntity;
+import org.miles.gank.databinding.GankXianduListFragmentBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
 import java.util.List;
 
 public class GankXianduListFragment
-        extends BaseViewModelFragment<GankCategoryListFragmentBinding, GankXianduListFragmentModel> {
+        extends BaseViewModelFragment<GankXianduListFragmentBinding, GankXianduListFragmentModel> {
 
     public static final String PARAM_CATEGORY = "param_category_type";
     private String mCategory;
@@ -36,7 +36,7 @@ public class GankXianduListFragment
 
     @Override
     protected int getLayoutId() {
-        return R.layout.gank_category_list_fragment;
+        return R.layout.gank_xiandu_list_fragment;
     }
 
     @Override

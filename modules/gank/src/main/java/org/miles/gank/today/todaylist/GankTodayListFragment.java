@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.miles.gank.R;
+import org.miles.gank.common.GankRecyclerAdapter;
 import org.miles.gank.databinding.GankTodayListFragmentBinding;
 import org.miles.gank.data.entity.GankTodayItemEntity;
 import org.miles.lib.mvvm.BaseViewModelFragment;
@@ -22,7 +23,7 @@ public class GankTodayListFragment
     public static final String PARAM_CATEGORY = "param_category";
 
     private String mGankCategory;
-    private GankTodayListAdapter mGankTodayListAdapter;
+    private GankRecyclerAdapter mGankRecyclerAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -57,10 +58,10 @@ public class GankTodayListFragment
     }
 
     private void initViews() {
-        if (mGankTodayListAdapter == null) {
-            mGankTodayListAdapter = new GankTodayListAdapter();
+        if (mGankRecyclerAdapter == null) {
+            mGankRecyclerAdapter = new GankRecyclerAdapter();
         }
-        mView.recyclerview.setAdapter(mGankTodayListAdapter);
+        mView.recyclerview.setAdapter(mGankRecyclerAdapter);
         mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mView.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -77,7 +78,7 @@ public class GankTodayListFragment
                     @Override
                     public void onChanged(List<GankTodayItemEntity> gankTodayItemEntities) {
                         if (gankTodayItemEntities != null && gankTodayItemEntities.size() > 0) {
-                            mGankTodayListAdapter.setDatas(gankTodayItemEntities);
+                            mGankRecyclerAdapter.setDatas(gankTodayItemEntities);
                         }
                         mView.swipeRefreshLayout.setRefreshing(false);
                     }

@@ -1,7 +1,6 @@
-package org.miles.gank.today.todaylist;
+package org.miles.gank.common;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -9,15 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.miles.gank.R;
 import org.miles.gank.data.entity.GankTodayItemEntity;
-import org.miles.gank.databinding.GankTodayItemLayoutBinding;
-import org.miles.lib.glide.GlideApp;
-import org.miles.lib.log.Logger;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GankTodayListAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
+public class GankRecyclerAdapter extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
 
     public static final int ITEMVIEW_TYPE_ONE_IMG = 1;
     public static final int ITEMVIEW_TYPE_NO_IMG = 2;

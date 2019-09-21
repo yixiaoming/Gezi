@@ -1,4 +1,4 @@
-package org.miles.gank.today.todaylist;
+package org.miles.gank.common;
 
 import android.view.ViewGroup;
 

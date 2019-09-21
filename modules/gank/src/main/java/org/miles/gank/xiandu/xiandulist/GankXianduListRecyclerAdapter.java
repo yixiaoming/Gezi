@@ -6,32 +6,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.miles.gank.R;
-import org.miles.gank.databinding.GankCategoryItemLayoutBinding;
 import org.miles.gank.data.entity.GankCategoryItemEntity;
+import org.miles.gank.databinding.GankXianduItemOneImgViewBinding;
+import org.miles.lib.glide.GlideApp;
 import org.miles.lib.mvvm.BaseRecyclerViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GankXianduListRecyclerAdapter
-        extends RecyclerView.Adapter<GankXianduListRecyclerAdapter.GankViewHolder> {
+        extends RecyclerView.Adapter<BaseRecyclerViewHolder> {
+
+    public static final int ITEMVIEW_TYPE_ONE_IMG = 1;
 
     private List<GankCategoryItemEntity> mDatas = new ArrayList<>();
 
-    public void setDatas(List<GankCategoryItemEntity> datas) {
-        mDatas.clear();
-        mDatas.addAll(datas);
-        notifyDataSetChanged();
-    }
-
     @NonNull
     @Override
-    public GankViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new GankViewHolder(parent, R.layout.gank_category_item_layout);
+    public BaseRecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case ITEMVIEW_TYPE_ONE_IMG:
+                return new GankCategoryItemOneImageHolder(parent, R.layout.gank_xiandu_item_one_img_view);
+        }
+        throw new IllegalArgumentException("Wrong item view type!");
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GankViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseRecyclerViewHolder holder, int position) {
         holder.bind(mDatas.get(position));
     }
 
@@ -40,16 +41,32 @@ public class GankXianduListRecyclerAdapter
         return mDatas.size();
     }
 
-    public class GankViewHolder
-            extends BaseRecyclerViewHolder<GankCategoryItemLayoutBinding, GankCategoryItemEntity> {
+    @Override
+    public int getItemViewType(int position) {
+        return ITEMVIEW_TYPE_ONE_IMG;
+    }
 
-        public GankViewHolder(@NonNull ViewGroup parent, int layoutId) {
+    public void setDatas(List<GankCategoryItemEntity> datas) {
+        mDatas.clear();
+        mDatas.addAll(datas);
+        notifyDataSetChanged();
+    }
+
+    class GankCategoryItemOneImageHolder
+            extends BaseRecyclerViewHolder<GankXianduItemOneImgViewBinding, GankCategoryItemEntity> {
+        protected GankCategoryItemOneImageHolder(@NonNull ViewGroup parent, int layoutId) {
             super(parent, layoutId);
         }
 
         @Override
         public void bind(GankCategoryItemEntity data) {
-            mView.title.setText(data.title);
+            mView.desc.setText(data.title);
+            mView.author.setText(data.site.name);
+            mView.date.setText(data.publishedAt);
+            GlideApp.with(mView.getRoot())
+                    .load(data.cover)
+                    .fitCenter()
+                    .into(mView.img);
         }
     }
 }
