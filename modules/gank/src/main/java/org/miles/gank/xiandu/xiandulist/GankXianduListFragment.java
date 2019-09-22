@@ -1,9 +1,10 @@
 package org.miles.gank.xiandu.xiandulist;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -84,19 +85,7 @@ public class GankXianduListFragment
                         if (gankSecondCategoryEntities != null && gankSecondCategoryEntities.size() > 0) {
                             mView.scrollTabs.setVisibility(View.VISIBLE);
                             for (final GankSecondCategoryEntity entity : gankSecondCategoryEntities) {
-                                TextView textView = new TextView(getContext());
-                                textView.setText(entity.title);
-                                ViewGroup.MarginLayoutParams params =
-                                        new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                                textView.setPadding(20, 10, 20, 10);
-                                textView.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        mModel.loadCategoryList(entity.categoryId);
-                                        mModel.setCurDisplayCategory(entity.categoryId);
-                                    }
-                                });
-                                mView.scrollTabs.addView(textView, params);
+                                mView.scrollTabs.addView(createRadioButton(entity));
                             }
                             mModel.loadCategoryList(gankSecondCategoryEntities.get(0).categoryId);
                             mModel.setCurDisplayCategory(gankSecondCategoryEntities.get(0).categoryId);
@@ -122,5 +111,19 @@ public class GankXianduListFragment
                     }
                 }
         );
+    }
+
+    private RadioButton createRadioButton(final GankSecondCategoryEntity entity) {
+        RadioButton radioButton = (RadioButton) LayoutInflater.from(getContext())
+                .inflate(R.layout.second_category_radio_item, mView.scrollTabs, false);
+        radioButton.setText(entity.title);
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mModel.loadCategoryList(entity.categoryId);
+                mModel.setCurDisplayCategory(entity.categoryId);
+            }
+        });
+        return radioButton;
     }
 }

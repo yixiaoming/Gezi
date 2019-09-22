@@ -5,4 +5,9 @@
     <color name="colorAccent">#D81B60</color>
     <color name="black">#000000</color>
     <color name="video_item_divider">#C7C7C7</color>
+
+    <color name="top_radio_stroke_color">#888888</color>
+    <color name="top_radio_bg_color">@color/colorAccent</color>
+
+    <color name="second_category_item_bg">@color/colorAccent</color>
 </resources>

@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:orientation="horizontal">
 
-            <TextView
+            <RadioButton
                 android:id="@+id/today_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/top_item_left_selector"
+                android:button="@null"
+                android:checked="true"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="最新" />
+                android:paddingLeft="@dimen/gank_top_radio_padding_left"
+                android:paddingTop="@dimen/gank_top_radio_padding_top"
+                android:paddingRight="@dimen/gank_top_radio_item_padding"
+                android:paddingBottom="@dimen/gank_top_radio_padding_top"
+                android:text="最新"
+                android:textColor="@drawable/top_radio_text_color"
+                android:textSize="@dimen/gank_top_radio_text_size" />
 
-            <TextView
+            <RadioButton
                 android:id="@+id/category_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
+                android:background="@drawable/top_item_right_selector"
+                android:button="@null"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="闲读" />
-        </LinearLayout>
+                android:paddingLeft="@dimen/gank_top_radio_item_padding"
+                android:paddingTop="@dimen/gank_top_radio_padding_top"
+                android:paddingRight="@dimen/gank_top_radio_padding_left"
+                android:paddingBottom="@dimen/gank_top_radio_padding_top"
+                android:text="闲读"
+                android:textColor="@drawable/top_radio_text_color"
+                android:textSize="@dimen/gank_top_radio_text_size" />
+        </RadioGroup>
 
         <FrameLayout
             android:id="@+id/gank_fragment_content"
