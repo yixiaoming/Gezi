@@ -65,6 +65,7 @@ public class GankXianduListRecyclerAdapter
             mView.date.setText(data.publishedAt);
             GlideApp.with(mView.getRoot())
                     .load(data.cover)
+                    .error(R.drawable.place_holder_img)
                     .fitCenter()
                     .into(mView.img);
         }

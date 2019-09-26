@@ -84,11 +84,12 @@ public class GankXianduListFragment
                     public void onChanged(List<GankSecondCategoryEntity> gankSecondCategoryEntities) {
                         if (gankSecondCategoryEntities != null && gankSecondCategoryEntities.size() > 0) {
                             mView.scrollTabs.setVisibility(View.VISIBLE);
-                            for (final GankSecondCategoryEntity entity : gankSecondCategoryEntities) {
+                            for (GankSecondCategoryEntity entity : gankSecondCategoryEntities) {
                                 mView.scrollTabs.addView(createRadioButton(entity));
                             }
                             mModel.loadCategoryList(gankSecondCategoryEntities.get(0).categoryId);
                             mModel.setCurDisplayCategory(gankSecondCategoryEntities.get(0).categoryId);
+                            ((RadioButton)mView.scrollTabs.getChildAt(0)).setChecked(true);
                         } else {
                             mView.scrollTabs.setVisibility(View.GONE);
                         }

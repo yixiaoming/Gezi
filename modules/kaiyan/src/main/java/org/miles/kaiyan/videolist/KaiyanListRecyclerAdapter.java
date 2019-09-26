@@ -51,11 +51,13 @@ public class KaiyanListRecyclerAdapter
         public void bind(KaiyanVideoItem item) {
             GlideApp.with(mView.getRoot())
                     .load(item.data.author.icon)
+                    .error(R.drawable.place_holder_img)
                     .fitCenter()
                     .into(mView.authorLogo);
             mView.videoplayer.setUp(item.data.playUrl, item.data.title);
             GlideApp.with(mView.getRoot())
                     .load(item.data.cover.detail)
+                    .error(R.drawable.place_holder_img)
                     .fitCenter()
                     .into(mView.videoplayer.ivThumb);
             mView.videoItemAuthorName.setText(item.data.author.name);
