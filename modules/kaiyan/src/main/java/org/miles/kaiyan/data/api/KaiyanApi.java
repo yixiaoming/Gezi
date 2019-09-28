@@ -6,6 +6,7 @@ import org.miles.kaiyan.data.entity.KaiyanVideoList;
 import java.util.List;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -14,10 +15,18 @@ public interface KaiyanApi {
     public static final String BASE_URL = "http://baobab.kaiyanapp.com/";
 
     @GET("api/v4/categories/")
-    Observable<List<KaiyanCategory>> getCategories();
+    Observable<List<KaiyanCategory>> getCategoriesObservable();
+
+    @GET("api/v4/categories/")
+    Call<List<KaiyanCategory>> getCategoryies();
 
     @GET("api/v3/categories/videoList")
-    Observable<KaiyanVideoList> getVideoList(
+    Observable<KaiyanVideoList> getVideoListObservable(
+            @Query("id") long id
+    );
+
+    @GET("api/v3/categories/videoList")
+    Call<KaiyanVideoList> getVideoList(
             @Query("id") long id
     );
 

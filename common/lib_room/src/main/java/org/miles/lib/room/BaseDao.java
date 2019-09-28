@@ -16,6 +16,8 @@ import java.util.List;
 @Dao
 public abstract class BaseDao<E> {
 
+    protected static String mTableName;
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract long insert(E entity);
 
@@ -49,7 +51,7 @@ public abstract class BaseDao<E> {
 
     public E selectById(long id) {
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(
-                "SELECT * FROM " + getTableName() + " where id=?",
+                "SELECT * FROM " + getTableName() + " WHERE id=?",
                 new Object[]{id}
         );
         return doSelectOne(query);
@@ -57,8 +59,8 @@ public abstract class BaseDao<E> {
 
     public List<E> selectByPage(int page, int pageSize) {
         SimpleSQLiteQuery query = new SimpleSQLiteQuery(
-                "SELECT * FROM " + getTableName() + " LIMIT (?,?)",
-                new Object[]{(page - 1) * pageSize, pageSize}
+                "SELECT * FROM " + getTableName() + " LIMIT ? OFFSET ? ",
+                new Object[]{pageSize, (page - 1) * pageSize}
         );
         return doSelectList(query);
     }
@@ -67,7 +69,8 @@ public abstract class BaseDao<E> {
         Class clazz = (Class)
                 ((ParameterizedType) getClass().getSuperclass().getGenericSuperclass())
                         .getActualTypeArguments()[0];
-        return clazz.getSimpleName();
+        mTableName = clazz.getSimpleName();
+        return mTableName;
     }
 
     @RawQuery

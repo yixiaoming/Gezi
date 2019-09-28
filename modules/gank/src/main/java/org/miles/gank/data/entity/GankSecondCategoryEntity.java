@@ -4,12 +4,14 @@ import android.provider.BaseColumns;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
 @Entity
 public class GankSecondCategoryEntity {
 
+    @PrimaryKey
     @ColumnInfo(name = BaseColumns._ID)
     @SerializedName("_id")
     public String id;

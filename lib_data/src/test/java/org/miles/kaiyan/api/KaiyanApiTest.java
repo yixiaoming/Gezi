@@ -20,7 +20,7 @@ public class KaiyanApiTest {
 
     @Test
     public void getCategories() {
-        RetrofitManager.get().getKaiyanApi().getCategories()
+        RetrofitManager.get().getKaiyanApi().getCategoriesObservable()
                 .subscribe(new Consumer<List<KaiyanCategory>>() {
                     @Override
                     public void accept(List<KaiyanCategory> kaiyanCategories) throws Exception {

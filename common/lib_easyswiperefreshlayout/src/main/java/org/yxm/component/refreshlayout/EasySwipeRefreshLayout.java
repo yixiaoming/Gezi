@@ -1,16 +1,17 @@
 package org.yxm.component.refreshlayout;
 
 import android.content.Context;
-import android.support.v4.view.NestedScrollingChild;
-import android.support.v4.view.NestedScrollingParent;
-import android.support.v4.view.NestedScrollingParentHelper;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.ListViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Scroller;
+
+import androidx.core.view.NestedScrollingChild;
+import androidx.core.view.NestedScrollingParent;
+import androidx.core.view.NestedScrollingParentHelper;
+import androidx.core.view.ViewCompat;
+import androidx.core.widget.ListViewCompat;
 
 /**
  * 下拉刷新LayoutView 支持自定义HeaderView，重写buildHeaderView方法 要获取下拉状态做动画，需要设置 OnScrollStateChangeListener

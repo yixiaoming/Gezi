@@ -1,5 +1,6 @@
 package org.miles.kaiyan.data.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
@@ -17,8 +18,8 @@ public class KaiyanVideoItem {
   public long autoId;
 
   public String type;
-  @ColumnInfo(name = "tab_id")
-  public int tabId;
+  @ColumnInfo(name = "category_id")
+  public long categoryId;
   @Embedded
   public Data data;
 

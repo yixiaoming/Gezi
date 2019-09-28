@@ -45,8 +45,8 @@ dependencies {
     implementation project(":common:lib_mvvm")
     implementation project(":common:lib_room")
     implementation project(":common:lib_widget")
+    implementation project(':lib_data')
 
-    implementation project(path: ':lib_data')
     if (!isModule.toBoolean()) {
         implementation project(":modules:kaiyan")
         implementation project(":modules:gank")

@@ -44,7 +44,7 @@ public class KaiyanCategoryDaoTest {
 
     @Test
     public void insert() {
-        mKaiyanApi.getCategories()
+        mKaiyanApi.getCategoriesObservable()
                 .doOnNext(new Consumer<List<KaiyanCategory>>() {
                     @Override
                     public void accept(List<KaiyanCategory> kaiyanCategories) throws Exception {

@@ -12,6 +12,7 @@ import org.miles.kaiyan.databinding.KaiyanFragmentBinding;
 import org.miles.kaiyan.data.entity.KaiyanCategory;
 import org.miles.lib.mvvm.BaseViewModelFragment;
 
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 public class KaiyanFragment

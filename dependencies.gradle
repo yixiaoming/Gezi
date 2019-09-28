@@ -18,6 +18,8 @@ ext {
             lifecycleProcessor: "androidx.lifecycle:lifecycle-compiler:2.0.0",
             room              : "androidx.room:room-runtime:2.1.0",
             roomProcessor     : "androidx.room:room-compiler:2.1.0",
+            roomRxjava        : "androidx.room:room-rxjava2:2.1.0",
+            roomTest          : "androidx.room:room-testing:2.1.0",
             retrofit          : "com.squareup.retrofit2:retrofit:2.6.1",
             retrofitJson      : "com.squareup.retrofit2:converter-gson:2.6.1",
             retrofitRxjava    : "com.squareup.retrofit2:adapter-rxjava2:2.6.1",

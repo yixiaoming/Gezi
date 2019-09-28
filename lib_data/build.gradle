@@ -41,6 +41,9 @@ dependencies {
     }
 
     implementation project(":common:lib_room")
+    implementation common.room
+    annotationProcessor common.roomProcessor
+
     implementation project(":common:lib_log")
 
     implementation common.retrofit
