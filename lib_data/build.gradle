@@ -42,6 +42,7 @@ dependencies {
 
     implementation project(":common:lib_room")
     implementation common.room
+    implementation common.roomRxjava
     annotationProcessor common.roomProcessor
 
     implementation project(":common:lib_log")

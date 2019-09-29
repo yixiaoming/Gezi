@@ -107,7 +107,7 @@ public class GankApiTest {
 
     @Test
     public void getRandomContents() {
-        mGankApi.getTodayRandomItems("App", 10)
+        mGankApi.getTodayRandomItemsObservable("App", 10)
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<GankBaseEntity<List<GankTodayItemEntity>>>() {
                     @Override

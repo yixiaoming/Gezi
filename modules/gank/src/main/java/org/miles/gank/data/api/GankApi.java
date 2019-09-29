@@ -10,6 +10,7 @@ import org.miles.gank.data.entity.GankTodayItemEntity;
 import java.util.List;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -39,7 +40,13 @@ public interface GankApi {
     );
 
     @GET("random/data/{type}/{count}")
-    Observable<GankBaseEntity<List<GankTodayItemEntity>>> getTodayRandomItems(
+    Observable<GankBaseEntity<List<GankTodayItemEntity>>> getTodayRandomItemsObservable(
+            @Path("type") String type,
+            @Path("count") int count
+    );
+
+    @GET("random/data/{type}/{count}")
+    Call<GankBaseEntity<List<GankTodayItemEntity>>> getTodayRandomItems(
             @Path("type") String type,
             @Path("count") int count
     );

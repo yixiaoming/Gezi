@@ -98,7 +98,7 @@ public class KaiyanListFragmentModel extends ViewModel {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        mKaiyanVideoDatas.postValue(null);
+                        mKaiyanVideoDatas.postValue(mKaiyanVideoDatas.getValue());
                     }
                 });
     }

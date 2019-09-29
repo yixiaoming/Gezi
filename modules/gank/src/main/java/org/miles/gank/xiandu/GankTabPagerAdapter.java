@@ -25,6 +25,9 @@ public class GankTabPagerAdapter extends FragmentPagerAdapter {
     }
 
     public void setDatas(List<GankFirstCategoryEntity> gankCategories) {
+        if (gankCategories == null || gankCategories.size() == 0) {
+            return;
+        }
         mGankCategories.clear();
         mGankXianduListFragments.clear();
 

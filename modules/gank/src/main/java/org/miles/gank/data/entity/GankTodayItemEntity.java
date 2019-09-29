@@ -21,6 +21,7 @@ public class GankTodayItemEntity {
 
     @SerializedName("_id")
     public String gankid;
+    public String category;
     @ColumnInfo(name = "create_at")
     public String createdAt;
     public String desc;
@@ -37,8 +38,9 @@ public class GankTodayItemEntity {
     @Override
     public String toString() {
         return "GankTodayItemEntity{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", gankid='" + gankid + '\'' +
+                ", category='" + category + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", desc='" + desc + '\'' +
                 ", publishedAt='" + publishedAt + '\'' +

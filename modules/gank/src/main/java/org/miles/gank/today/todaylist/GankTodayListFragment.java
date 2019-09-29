@@ -54,7 +54,8 @@ public class GankTodayListFragment
         super.onViewCreated(view, savedInstanceState);
         initViews();
         initObservers();
-        mModel.initDatas(mGankCategory);
+        mModel.setGankCategory(mGankCategory);
+        mModel.initDatas();
     }
 
     private void initViews() {
@@ -67,7 +68,7 @@ public class GankTodayListFragment
         mView.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mModel.refresh(mGankCategory);
+                mModel.refresh();
             }
         });
     }
