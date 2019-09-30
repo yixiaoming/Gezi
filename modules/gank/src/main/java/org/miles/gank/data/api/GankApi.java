@@ -19,14 +19,28 @@ public interface GankApi {
     public static final String BASE_URL = "http://gank.io/api/";
 
     @GET("xiandu/categories")
-    Observable<GankBaseEntity<List<GankFirstCategoryEntity>>> getFirstCategores();
+    Observable<GankBaseEntity<List<GankFirstCategoryEntity>>> getFirstCategoresObservable();
+
+    @GET("xiandu/categories")
+    Call<GankBaseEntity<List<GankFirstCategoryEntity>>> getFirstCategores();
 
     @GET("xiandu/category/{categoryId}")
-    Observable<GankBaseEntity<List<GankSecondCategoryEntity>>> getSecondCategories(
+    Observable<GankBaseEntity<List<GankSecondCategoryEntity>>> getSecondCategoriesObservable(
+            @Path("categoryId") String categoryId);
+
+    @GET("xiandu/category/{categoryId}")
+    Call<GankBaseEntity<List<GankSecondCategoryEntity>>> getSecondCategories(
             @Path("categoryId") String categoryId);
 
     @GET("xiandu/data/id/{id}/count/{count}/page/{page}")
-    Observable<GankBaseEntity<List<GankCategoryItemEntity>>> getCategoryItems(
+    Observable<GankBaseEntity<List<GankCategoryItemEntity>>> getCategoryItemsObservable(
+            @Path("id") String secondCategoryId,
+            @Path("count") int count,
+            @Path("page") int page
+    );
+
+    @GET("xiandu/data/id/{id}/count/{count}/page/{page}")
+    Call<GankBaseEntity<List<GankCategoryItemEntity>>> getCategoryItems(
             @Path("id") String secondCategoryId,
             @Path("count") int count,
             @Path("page") int page

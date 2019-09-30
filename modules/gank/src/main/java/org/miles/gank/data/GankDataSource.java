@@ -2,6 +2,7 @@ package org.miles.gank.data;
 
 import org.miles.gank.data.api.GankApi;
 import org.miles.gank.data.db.GankDao;
+import org.miles.gank.data.db.GankXianduDao;
 
 public class GankDataSource {
 
@@ -14,6 +15,8 @@ public class GankDataSource {
 
     public interface Dao {
         GankDao gankDao();
+
+        GankXianduDao gankXianduDao();
     }
 
     public static void initApi(Api api) {

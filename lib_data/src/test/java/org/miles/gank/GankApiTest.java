@@ -30,7 +30,7 @@ public class GankApiTest {
 
     @Test
     public void getFirstCategores() {
-        mGankApi.getFirstCategores()
+        mGankApi.getFirstCategoresObservable()
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<GankBaseEntity<List<GankFirstCategoryEntity>>>() {
                     @Override
@@ -49,7 +49,7 @@ public class GankApiTest {
 
     @Test
     public void getSecondCategories() {
-        mGankApi.getSecondCategories("apps")
+        mGankApi.getSecondCategoriesObservable("apps")
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<GankBaseEntity<List<GankSecondCategoryEntity>>>() {
                     @Override
@@ -69,7 +69,7 @@ public class GankApiTest {
 
     @Test
     public void getCategoryItems() {
-        mGankApi.getCategoryItems("zhihu", 10, 1)
+        mGankApi.getCategoryItemsObservable("zhihu", 10, 1)
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<GankBaseEntity<List<GankCategoryItemEntity>>>() {
                     @Override

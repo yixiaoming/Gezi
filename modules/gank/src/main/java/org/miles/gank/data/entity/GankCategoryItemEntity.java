@@ -2,6 +2,7 @@ package org.miles.gank.data.entity;
 
 import android.provider.BaseColumns;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
@@ -12,10 +13,13 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 public class GankCategoryItemEntity {
 
+    @NonNull
     @PrimaryKey
     @ColumnInfo(name = BaseColumns._ID)
     @SerializedName("_id")
     public String id;
+
+    public String categoryId;
 
     public String content;
 
@@ -58,7 +62,7 @@ public class GankCategoryItemEntity {
 
         public String type;
 
-        public String url;
+        public String siteUrl;
 
         @Override
         public String toString() {
@@ -71,7 +75,7 @@ public class GankCategoryItemEntity {
                     ", name='" + name + '\'' +
                     ", subscribers='" + subscribers + '\'' +
                     ", type='" + type + '\'' +
-                    ", url='" + url + '\'' +
+                    ", siteUrl='" + siteUrl + '\'' +
                     '}';
         }
     }
@@ -80,9 +84,10 @@ public class GankCategoryItemEntity {
     public String toString() {
         return "GankCategoryItemEntity{" +
                 "id='" + id + '\'' +
+                ", categoryId='" + categoryId + '\'' +
                 ", content='" + content + '\'' +
                 ", cover='" + cover + '\'' +
-                ", createAt='" + createdAt + '\'' +
+                ", createdAt='" + createdAt + '\'' +
                 ", publishedAt='" + publishedAt + '\'' +
                 ", raw='" + raw + '\'' +
                 ", title='" + title + '\'' +
