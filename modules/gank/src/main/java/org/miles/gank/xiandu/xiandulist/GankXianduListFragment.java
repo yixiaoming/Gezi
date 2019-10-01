@@ -3,7 +3,6 @@ package org.miles.gank.xiandu.xiandulist;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
@@ -88,7 +87,6 @@ public class GankXianduListFragment
                                 mView.scrollTabs.addView(createRadioButton(entity));
                             }
                             mModel.loadCategoryList(gankSecondCategoryEntities.get(0).categoryId);
-                            mModel.setCurDisplayCategory(gankSecondCategoryEntities.get(0).categoryId);
                             ((RadioButton)mView.scrollTabs.getChildAt(0)).setChecked(true);
                         } else {
                             mView.scrollTabs.setVisibility(View.GONE);
@@ -122,7 +120,6 @@ public class GankXianduListFragment
             @Override
             public void onClick(View view) {
                 mModel.loadCategoryList(entity.categoryId);
-                mModel.setCurDisplayCategory(entity.categoryId);
             }
         });
         return radioButton;

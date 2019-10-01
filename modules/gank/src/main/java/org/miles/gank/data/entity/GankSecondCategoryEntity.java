@@ -3,6 +3,7 @@ package org.miles.gank.data.entity;
 import android.provider.BaseColumns;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -23,6 +24,8 @@ public class GankSecondCategoryEntity {
 
     public String icon;
 
+    public String firstCategoryId;
+
     @SerializedName("id")
     public String categoryId;
 
@@ -33,7 +36,8 @@ public class GankSecondCategoryEntity {
         return "GankSecondCategoryEntity{" +
                 "id='" + id + '\'' +
                 ", createAt='" + createAt + '\'' +
-                ", icon='" +  icon + '\'' +
+                ", icon='" + icon + '\'' +
+                ", firstCategoryId='" + firstCategoryId + '\'' +
                 ", categoryId='" + categoryId + '\'' +
                 ", title='" + title + '\'' +
                 '}';

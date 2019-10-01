@@ -27,15 +27,14 @@ public class GankXianduListFragmentModel extends ViewModel {
     private GankXianduDao mGankXianduDao;
     private MutableLiveData<List<GankCategoryItemEntity>> mGankEntities;
     private MutableLiveData<List<GankSecondCategoryEntity>> mSecondCategories;
-    private HashMap<String, Integer> mCategoryPages;
-    private String mCurDisplayCategory;
+    private HashMap<String, Integer> mCategoryPages = new HashMap<>();
+    private String mCurSecondCategoryId;
 
     public GankXianduListFragmentModel() {
         mGankApi = GankDataSource.api().gankApi();
         mGankXianduDao = GankDataSource.dao().gankXianduDao();
         mGankEntities = new MutableLiveData<>();
         mSecondCategories = new MutableLiveData<>();
-        mCategoryPages = new HashMap<>();
     }
 
     public MutableLiveData<List<GankCategoryItemEntity>> getGankEntities() {
@@ -47,8 +46,8 @@ public class GankXianduListFragmentModel extends ViewModel {
     }
 
     @SuppressLint("CheckResult")
-    public void initDatas(final String categoryId) {
-        mGankXianduDao.selectSecondCategoriesMaybe(categoryId)
+    public void initDatas(final String firstCategoryId) {
+        mGankXianduDao.selectSecondCategoriesMaybe(firstCategoryId)
                 .doOnSuccess(new Consumer<List<GankSecondCategoryEntity>>() {
                     @Override
                     public void accept(List<GankSecondCategoryEntity> entities) throws Exception {
@@ -57,9 +56,13 @@ public class GankXianduListFragmentModel extends ViewModel {
                             return;
                         }
                         GankBaseEntity<List<GankSecondCategoryEntity>> body =
-                                mGankApi.getSecondCategories(categoryId).execute().body();
+                                mGankApi.getSecondCategories(firstCategoryId).execute().body();
                         if (body != null) {
                             entities = body.results;
+                            for (GankSecondCategoryEntity entity : entities) {
+                                entity.firstCategoryId = firstCategoryId;
+                            }
+                            mGankXianduDao.deleteSecondCategoryByCategoryId(firstCategoryId);
                             mGankXianduDao.insertSecondCategories(entities);
                             mSecondCategories.postValue(entities);
                         } else {
@@ -71,39 +74,42 @@ public class GankXianduListFragmentModel extends ViewModel {
                 .subscribe();
     }
 
-    public void setCurDisplayCategory(String category) {
-        mCurDisplayCategory = category;
-    }
-
     @SuppressLint("CheckResult")
-    public void loadCategoryList(final String categoryId) {
-        if (mCategoryPages.get(categoryId) == null) {
-            mCategoryPages.put(categoryId, DEFAULT_PAGE);
+    public void loadCategoryList(final String secondItemId) {
+        mCurSecondCategoryId = secondItemId;
+        if (mCategoryPages.get(secondItemId) == null) {
+            mCategoryPages.put(secondItemId, DEFAULT_PAGE);
         }
-        final int page = mCategoryPages.get(categoryId);
+        final int page = mCategoryPages.get(secondItemId);
 
-        mGankXianduDao.selectXianduItemByCategoryIdMaybe(categoryId)
+        mGankXianduDao.selectXianduItemByCategoryIdMaybe(secondItemId)
                 .doOnSuccess(new Consumer<List<GankCategoryItemEntity>>() {
                     @Override
                     public void accept(List<GankCategoryItemEntity> gankCategoryItemEntities) throws Exception {
                         if (gankCategoryItemEntities != null && gankCategoryItemEntities.size() > 0) {
                             mGankEntities.postValue(gankCategoryItemEntities);
-                            mCategoryPages.put(categoryId, mCategoryPages.get(categoryId) + 1);
+                            mCategoryPages.put(secondItemId, mCategoryPages.get(secondItemId) + 1);
                             return;
                         }
                         GankBaseEntity<List<GankCategoryItemEntity>> body =
-                                mGankApi.getCategoryItems(categoryId, DEFAULT_PAGE_SIZE, page).execute().body();
+                                mGankApi.getCategoryItems(secondItemId, DEFAULT_PAGE_SIZE, page).execute().body();
                         if (body != null) {
                             gankCategoryItemEntities = body.results;
                             for (GankCategoryItemEntity entity : gankCategoryItemEntities) {
-                                entity.categoryId = categoryId;
+                                entity.categoryId = secondItemId;
                             }
-                            mGankXianduDao.deleteGankItemsByCategoryId(categoryId);
+                            mGankXianduDao.deleteGankItemsByCategoryId(secondItemId);
                             mGankXianduDao.insertGankItems(gankCategoryItemEntities);
                             mGankEntities.postValue(gankCategoryItemEntities);
                         } else {
                             mGankEntities.postValue(null);
                         }
+                    }
+                })
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        mGankEntities.postValue(null);
                     }
                 })
                 .subscribeOn(Schedulers.io())
@@ -112,24 +118,24 @@ public class GankXianduListFragmentModel extends ViewModel {
 
     @SuppressLint("CheckResult")
     public void refresh() {
-        if (mCategoryPages.get(mCurDisplayCategory) == null) {
-            mCategoryPages.put(mCurDisplayCategory, DEFAULT_PAGE);
+        if (mCategoryPages.get(mCurSecondCategoryId) == null) {
+            mCategoryPages.put(mCurSecondCategoryId, DEFAULT_PAGE);
         }
-        final int page = mCategoryPages.get(mCurDisplayCategory);
-        mGankApi.getCategoryItemsObservable(mCurDisplayCategory, DEFAULT_PAGE_SIZE, page)
+        final int page = mCategoryPages.get(mCurSecondCategoryId);
+        mGankApi.getCategoryItemsObservable(mCurSecondCategoryId, DEFAULT_PAGE_SIZE, page)
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Consumer<GankBaseEntity<List<GankCategoryItemEntity>>>() {
                     @Override
                     public void accept(GankBaseEntity<List<GankCategoryItemEntity>> listGankBaseEntity) throws Exception {
                         if (listGankBaseEntity.results == null || listGankBaseEntity.results.size() == 0) {
-                            Logger.d("load failed:" + mCurDisplayCategory + ",page:" + page);
+                            Logger.d("load failed:" + mCurSecondCategoryId + ",page:" + page);
                         } else {
                             for (GankCategoryItemEntity entity : listGankBaseEntity.results) {
-                                entity.categoryId = mCurDisplayCategory;
+                                entity.categoryId = mCurSecondCategoryId;
                             }
-                            mGankXianduDao.deleteGankItemsByCategoryId(mCurDisplayCategory);
+                            mGankXianduDao.deleteGankItemsByCategoryId(mCurSecondCategoryId);
                             mGankXianduDao.insertGankItems(listGankBaseEntity.results);
-                            mCategoryPages.put(mCurDisplayCategory, mCategoryPages.get(mCurDisplayCategory) + 1);
+                            mCategoryPages.put(mCurSecondCategoryId, mCategoryPages.get(mCurSecondCategoryId) + 1);
                         }
                         mGankEntities.getValue().addAll(0, listGankBaseEntity.results);
                         mGankEntities.postValue(mGankEntities.getValue());
@@ -137,7 +143,7 @@ public class GankXianduListFragmentModel extends ViewModel {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        mGankEntities.postValue(null);
+                        mGankEntities.postValue(mGankEntities.getValue());
                     }
                 });
     }
