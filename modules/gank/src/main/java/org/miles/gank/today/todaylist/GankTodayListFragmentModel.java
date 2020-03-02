@@ -1,6 +1,7 @@
 package org.miles.gank.today.todaylist;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.text.TextUtils;
 
 import androidx.lifecycle.MutableLiveData;

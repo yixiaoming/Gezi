@@ -52,6 +52,7 @@ dependencies {
     implementation project(":common:lib_log")
     implementation project(":common:lib_glide")
     implementation project(":common:lib_player")
+    implementation project(":common:lib_webview")
 
     implementation common.design
     implementation common.swiperefreshlayout

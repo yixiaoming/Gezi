@@ -1,5 +1,6 @@
 package org.miles.gank.xiandu.xiandulist;
 
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,20 @@ public class GankXianduListRecyclerAdapter
     public static final int ITEMVIEW_TYPE_ONE_IMG = 1;
 
     private List<GankCategoryItemEntity> mDatas = new ArrayList<>();
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(GankXianduListRecyclerAdapter.OnItemClickListener listener){
+        mOnItemClickListener = listener;
+    }
+
+    public abstract static class OnItemClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            onItemClicked((GankCategoryItemEntity) view.getTag());
+        }
+
+        public abstract void onItemClicked(GankCategoryItemEntity entity);
+    }
 
     @NonNull
     @Override
@@ -34,6 +49,10 @@ public class GankXianduListRecyclerAdapter
     @Override
     public void onBindViewHolder(@NonNull BaseRecyclerViewHolder holder, int position) {
         holder.bind(mDatas.get(position));
+        holder.itemView.setTag(mDatas.get(position));
+        if (mOnItemClickListener != null) {
+            holder.itemView.setOnClickListener(mOnItemClickListener);
+        }
     }
 
     @Override
@@ -52,7 +71,7 @@ public class GankXianduListRecyclerAdapter
         notifyDataSetChanged();
     }
 
-    class GankCategoryItemOneImageHolder
+    static class GankCategoryItemOneImageHolder
             extends BaseRecyclerViewHolder<GankXianduItemOneImgViewBinding, GankCategoryItemEntity> {
         protected GankCategoryItemOneImageHolder(@NonNull ViewGroup parent, int layoutId) {
             super(parent, layoutId);

@@ -1,6 +1,7 @@
 package org.miles.gank.common;
 
 import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,20 @@ public class GankRecyclerAdapter extends RecyclerView.Adapter<BaseRecyclerViewHo
     public static final int ITEMVIEW_TYPE_VIDEO = 5;
 
     private List<GankTodayItemEntity> mDatas = new ArrayList<>();
+    private OnItemClickListener mOnItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mOnItemClickListener = listener;
+    }
+
+    public abstract static class OnItemClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            onItemClicked((GankTodayItemEntity) view.getTag());
+        }
+
+        public abstract void onItemClicked(GankTodayItemEntity entity);
+    }
 
     @NonNull
     @Override
@@ -44,6 +59,8 @@ public class GankRecyclerAdapter extends RecyclerView.Adapter<BaseRecyclerViewHo
     @Override
     public void onBindViewHolder(@NonNull BaseRecyclerViewHolder holder, int position) {
         holder.bind(mDatas.get(position));
+        holder.itemView.setTag(mDatas.get(position));
+        holder.itemView.setOnClickListener(mOnItemClickListener);
     }
 
     @Override

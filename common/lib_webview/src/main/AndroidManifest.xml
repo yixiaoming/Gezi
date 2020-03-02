@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lib_webview">
+
+    <application>
+        <activity android:name="org.miles.webview.WebViewActivity">
+            <intent-filter>
+                <action android:name="org.miles.webview.open" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

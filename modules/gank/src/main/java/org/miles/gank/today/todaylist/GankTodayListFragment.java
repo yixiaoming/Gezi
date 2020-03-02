@@ -11,9 +11,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.miles.gank.R;
 import org.miles.gank.common.GankRecyclerAdapter;
-import org.miles.gank.databinding.GankTodayListFragmentBinding;
 import org.miles.gank.data.entity.GankTodayItemEntity;
+import org.miles.gank.databinding.GankTodayListFragmentBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
+import org.miles.webview.WebViewActivity;
 
 import java.util.List;
 
@@ -61,6 +62,12 @@ public class GankTodayListFragment
     private void initViews() {
         if (mGankRecyclerAdapter == null) {
             mGankRecyclerAdapter = new GankRecyclerAdapter();
+            mGankRecyclerAdapter.setOnItemClickListener(new GankRecyclerAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClicked(GankTodayItemEntity entity) {
+                    WebViewActivity.openWebviewWithUrl(getContext(), entity.url);
+                }
+            });
         }
         mView.recyclerview.setAdapter(mGankRecyclerAdapter);
         mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));

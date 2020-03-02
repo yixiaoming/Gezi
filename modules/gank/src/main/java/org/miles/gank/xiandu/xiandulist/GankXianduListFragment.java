@@ -16,6 +16,7 @@ import org.miles.gank.data.entity.GankCategoryItemEntity;
 import org.miles.gank.data.entity.GankSecondCategoryEntity;
 import org.miles.gank.databinding.GankXianduListFragmentBinding;
 import org.miles.lib.mvvm.BaseViewModelFragment;
+import org.miles.webview.WebViewActivity;
 
 import java.util.List;
 
@@ -64,6 +65,12 @@ public class GankXianduListFragment
     private void initViews() {
         if (mGankXianduListRecyclerAdapter == null) {
             mGankXianduListRecyclerAdapter = new GankXianduListRecyclerAdapter();
+            mGankXianduListRecyclerAdapter.setOnItemClickListener(new GankXianduListRecyclerAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClicked(GankCategoryItemEntity entity) {
+                    WebViewActivity.openWebviewWithUrl(getContext(), entity.url);
+                }
+            });
         }
         mView.recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         mView.recyclerview.setAdapter(mGankXianduListRecyclerAdapter);
@@ -87,7 +94,7 @@ public class GankXianduListFragment
                                 mView.scrollTabs.addView(createRadioButton(entity));
                             }
                             mModel.loadCategoryList(gankSecondCategoryEntities.get(0).categoryId);
-                            ((RadioButton)mView.scrollTabs.getChildAt(0)).setChecked(true);
+                            ((RadioButton) mView.scrollTabs.getChildAt(0)).setChecked(true);
                         } else {
                             mView.scrollTabs.setVisibility(View.GONE);
                         }

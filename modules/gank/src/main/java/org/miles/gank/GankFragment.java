@@ -67,6 +67,7 @@ public class GankFragment
     }
 
     private void showFragment(String fragmentTag) {
+        if (getFragmentManager() == null) return;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         Fragment willShowFragment = getFragmentManager().findFragmentByTag(fragmentTag);
         if (willShowFragment != null) {
